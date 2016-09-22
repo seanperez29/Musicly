@@ -18,8 +18,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         let cellNib = UINib(nibName: "NoSearchResultsFound", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "NoSearchResultsFound")
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
     }
     
     func performSearch() {
@@ -36,10 +34,6 @@ class SearchViewController: UIViewController {
                 }
             })
         }
-    }
-    
-    func dismissKeyboard() {
-        searchBar.resignFirstResponder()
     }
     
 }
@@ -73,6 +67,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "PlayAudio", sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

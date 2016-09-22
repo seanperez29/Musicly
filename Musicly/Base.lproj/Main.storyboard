@@ -118,11 +118,57 @@
                     <connections>
                         <outlet property="searchBar" destination="LDt-xC-eJp" id="2Ux-jh-h2l"/>
                         <outlet property="tableView" destination="bTB-LN-jHP" id="XBB-a3-MhF"/>
+                        <segue destination="LYD-Np-51u" kind="presentation" identifier="PlayAudio" id="RtI-3b-zGA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933.60000000000002" y="447.52623688155927"/>
+        </scene>
+        <!--Play Audio View Controller-->
+        <scene sceneID="OEr-Bt-OKR">
+            <objects>
+                <viewController id="LYD-Np-51u" customClass="PlayAudioViewController" customModule="Musicly" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d0u-SI-R62"/>
+                        <viewControllerLayoutGuide type="bottom" id="Twi-ea-Svr"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="gNH-C2-58I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-xf-WOG" userLabel="Pop-up View">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wi7-Xy-DY5" userLabel="Close Button">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="5fe-gS-FYi"/>
+                                            <constraint firstAttribute="width" constant="30" id="Wko-Zl-aif"/>
+                                        </constraints>
+                                        <state key="normal" image="Multiply-50"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="LYD-Np-51u" eventType="touchUpInside" id="nmi-SG-Kc3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Wi7-Xy-DY5" firstAttribute="top" secondItem="uwe-xf-WOG" secondAttribute="top" constant="3" id="AbY-1a-LNy"/>
+                                    <constraint firstAttribute="height" constant="240" id="mQ2-FI-7CN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wi7-Xy-DY5" secondAttribute="trailing" constant="3" id="qSn-Id-L69"/>
+                                    <constraint firstAttribute="width" constant="240" id="rMO-2n-BBM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uwe-xf-WOG" firstAttribute="centerY" secondItem="gNH-C2-58I" secondAttribute="centerY" id="Aee-LK-WCY"/>
+                            <constraint firstItem="uwe-xf-WOG" firstAttribute="centerX" secondItem="gNH-C2-58I" secondAttribute="centerX" id="uRy-hG-jKg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ObH-Z1-DbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="497"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="yqT-uS-6lM">
@@ -141,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kU4-ZM-QOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="89"/>
+            <point key="canvasLocation" x="1732" y="-248"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -171,6 +217,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Multiply-50" width="50" height="50"/>
         <image name="heart_selected_icon" width="20" height="19"/>
         <image name="menubtn" width="20" height="14"/>
         <image name="searchbtn" width="20" height="20"/>

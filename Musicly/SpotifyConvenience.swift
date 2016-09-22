@@ -74,9 +74,8 @@ extension SpotifyClient {
                 let imageDict = images[1] as! [String:AnyObject]
                 let albumURL = imageDict["url"] as! String
                 newTrack.albumURL = albumURL
-                print(albumURL)
+                TrackResults.sharedInstance.tracks.append(newTrack)
             }
-            
             completionHandler(parsedResult as AnyObject?, nil)
         }
         task.resume()

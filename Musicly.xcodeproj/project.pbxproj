@@ -18,6 +18,8 @@
 		911AB6C81D933551007981DE /* SpotifyConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6C71D933551007981DE /* SpotifyConvenience.swift */; };
 		911AB6CA1D9339FD007981DE /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6C91D9339FD007981DE /* Track.swift */; };
 		911AB6CE1D935604007981DE /* TrackResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CD1D935604007981DE /* TrackResults.swift */; };
+		911AB6D01D936AE7007981DE /* TracksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CF1D936AE7007981DE /* TracksTableViewCell.swift */; };
+		911AB6D21D9370D2007981DE /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6D11D9370D2007981DE /* GCDBlackBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		911AB6C71D933551007981DE /* SpotifyConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyConvenience.swift; sourceTree = "<group>"; };
 		911AB6C91D9339FD007981DE /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		911AB6CD1D935604007981DE /* TrackResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackResults.swift; sourceTree = "<group>"; };
+		911AB6CF1D936AE7007981DE /* TracksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksTableViewCell.swift; sourceTree = "<group>"; };
+		911AB6D11D9370D2007981DE /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 				911AB6AB1D9321C7007981DE /* AppDelegate.swift */,
 				911AB6B41D9321C7007981DE /* Assets.xcassets */,
 				911AB6B91D9321C7007981DE /* Info.plist */,
+				911AB6D11D9370D2007981DE /* GCDBlackBox.swift */,
 			);
 			path = Musicly;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 			children = (
 				911AB6C91D9339FD007981DE /* Track.swift */,
 				911AB6CD1D935604007981DE /* TrackResults.swift */,
+				911AB6CF1D936AE7007981DE /* TracksTableViewCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -191,7 +197,9 @@
 				911AB6B01D9321C7007981DE /* SearchViewController.swift in Sources */,
 				911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */,
 				911AB6C01D932DF7007981DE /* FavoritesViewController.swift in Sources */,
+				911AB6D21D9370D2007981DE /* GCDBlackBox.swift in Sources */,
 				911AB6CE1D935604007981DE /* TrackResults.swift in Sources */,
+				911AB6D01D936AE7007981DE /* TracksTableViewCell.swift in Sources */,
 				911AB6C61D933526007981DE /* SpotifyClient.swift in Sources */,
 				911AB6AE1D9321C7007981DE /* HomeViewController.swift in Sources */,
 				911AB6CA1D9339FD007981DE /* Track.swift in Sources */,

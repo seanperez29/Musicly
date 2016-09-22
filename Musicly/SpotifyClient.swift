@@ -12,7 +12,7 @@ class SpotifyClient: NSObject {
     static var sharedInstance = SpotifyClient()
     
     func loadTracks(_ artist: String, completionHandler: @escaping (_ results: AnyObject?, _ errorString: String?) -> Void) {
-        let methodParameters = ["q": artist, "type": "track"]
+        let methodParameters = ["q": artist, "type": "track", "limit": "50"]
         
         taskForGetMethod(methodParameters as [String : AnyObject]) { (result, errorString) in
             guard (errorString == nil) else {
@@ -20,6 +20,7 @@ class SpotifyClient: NSObject {
                 completionHandler(nil, errorString)
                 return
             }
+            completionHandler(result, nil)
         }
         
     }

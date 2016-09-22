@@ -54,13 +54,13 @@ extension SpotifyClient {
     
     func getTracksFromResults(_ items: AnyObject) {
         for i in 0..<items.count {
-            var newTrack = Track()
+            var dict = [String:String]()
             let item = items[i] as! [String:AnyObject]
-            let name = item["name"] as! String
-            newTrack.songName = name
+            let songName = item["name"] as! String
+            dict["songName"] = songName
             
             let previewURL = item["preview_url"] as! String
-            newTrack.mediaURL = previewURL
+            dict["mediaURL"] = previewURL
    
             guard let artists = item["artists"] else {
                 print("Cannot find key 'artists' in \(item)")
@@ -68,7 +68,7 @@ extension SpotifyClient {
             }
             let artistArray = artists[0] as! [String:AnyObject]
             let artist = artistArray["name"] as! String
-            newTrack.artistName = artist
+            dict["artistName"] = artist
 
             guard let albumArray = item["album"] as? [String:AnyObject] else {
                 print("Cannot find key 'album' in \(item)")
@@ -80,7 +80,8 @@ extension SpotifyClient {
             }
             let imageDict = images[1] as! [String:AnyObject]
             let albumURL = imageDict["url"] as! String
-            newTrack.albumURL = albumURL
+            dict["albumURL"] = albumURL
+            let newTrack = Track(dictionary: dict as [String:AnyObject])
             TrackResults.sharedInstance.tracks.append(newTrack)
         }
     }

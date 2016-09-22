@@ -10,14 +10,15 @@ import Foundation
 
 struct Track {
     
-    var artistName = ""
-    var songName = ""
-    var mediaURL = ""
-    var albumURL = ""
+    var artistName: String!
+    var songName: String!
+    var mediaURL: String!
+    var albumURL: String!
     
-//    init(dictionary: [String:AnyObject]) {
-//        artistName = dictionary["artistName"] as! String
-//        songName = dictionary["songName"] as! String
-//        mediaURL = dictionary["mediaURL"] as! String
-//    }
+    init(dictionary: [String:AnyObject]) {
+        artistName = dictionary["artistName"] as! String
+        songName = dictionary["songName"] as! String
+        mediaURL = dictionary["mediaURL"] as! String
+        albumURL = dictionary["albumURL"] as! String
+    }
 }

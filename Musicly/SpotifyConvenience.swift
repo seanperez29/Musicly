@@ -54,12 +54,12 @@ extension SpotifyClient {
     
     func getTracksFromResults(_ items: AnyObject) {
         for i in 0..<items.count {
-            var dict = [String:String]()
+            var dict = [String:AnyObject]()
             let item = items[i] as! [String:AnyObject]
-            let songName = item["name"] as! String
+            let songName = item["name"]
             dict["songName"] = songName
             
-            let previewURL = item["preview_url"] as! String
+            let previewURL = item["preview_url"]
             dict["mediaURL"] = previewURL
    
             guard let artists = item["artists"] else {
@@ -67,7 +67,7 @@ extension SpotifyClient {
                 return
             }
             let artistArray = artists[0] as! [String:AnyObject]
-            let artist = artistArray["name"] as! String
+            let artist = artistArray["name"]
             dict["artistName"] = artist
 
             guard let albumArray = item["album"] as? [String:AnyObject] else {
@@ -79,7 +79,7 @@ extension SpotifyClient {
                 return
             }
             let imageDict = images[1] as! [String:AnyObject]
-            let albumURL = imageDict["url"] as! String
+            let albumURL = imageDict["url"]
             dict["albumURL"] = albumURL
             let newTrack = Track(dictionary: dict as [String:AnyObject])
             TrackResults.sharedInstance.tracks.append(newTrack)

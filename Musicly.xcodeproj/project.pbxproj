@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		911A3D5A1D94616A0002C0C0 /* NoSearchResultsFound.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */; };
+		911A3D5E1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A3D5D1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift */; };
 		911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AB1D9321C7007981DE /* AppDelegate.swift */; };
 		911AB6AE1D9321C7007981DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AD1D9321C7007981DE /* HomeViewController.swift */; };
 		911AB6B01D9321C7007981DE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AF1D9321C7007981DE /* SearchViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSearchResultsFound.xib; sourceTree = "<group>"; };
+		911A3D5D1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSearchResultsTableViewCell.swift; sourceTree = "<group>"; };
 		911AB6A81D9321C7007981DE /* Musicly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musicly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		911AB6AB1D9321C7007981DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		911AB6AD1D9321C7007981DE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				911AB6C91D9339FD007981DE /* Track.swift */,
 				911AB6CD1D935604007981DE /* TrackResults.swift */,
 				911AB6CF1D936AE7007981DE /* TracksTableViewCell.swift */,
+				911A3D5D1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 				911AB6B11D9321C7007981DE /* Main.storyboard */,
 				911AB6B61D9321C7007981DE /* LaunchScreen.storyboard */,
 				911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */,
+				911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -185,6 +191,7 @@
 			files = (
 				911AB6B81D9321C7007981DE /* LaunchScreen.storyboard in Resources */,
 				911AB6B51D9321C7007981DE /* Assets.xcassets in Resources */,
+				911A3D5A1D94616A0002C0C0 /* NoSearchResultsFound.xib in Resources */,
 				911AB6B31D9321C7007981DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				911AB6C81D933551007981DE /* SpotifyConvenience.swift in Sources */,
+				911A3D5E1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift in Sources */,
 				911AB6B01D9321C7007981DE /* SearchViewController.swift in Sources */,
 				911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */,
 				911AB6C01D932DF7007981DE /* FavoritesViewController.swift in Sources */,
@@ -368,6 +376,7 @@
 				911AB6BE1D9321C7007981DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

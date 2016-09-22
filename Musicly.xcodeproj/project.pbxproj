@@ -8,22 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AB1D9321C7007981DE /* AppDelegate.swift */; };
-		911AB6AE1D9321C7007981DE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AD1D9321C7007981DE /* FirstViewController.swift */; };
-		911AB6B01D9321C7007981DE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AF1D9321C7007981DE /* SecondViewController.swift */; };
+		911AB6AE1D9321C7007981DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AD1D9321C7007981DE /* HomeViewController.swift */; };
+		911AB6B01D9321C7007981DE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6AF1D9321C7007981DE /* SearchViewController.swift */; };
 		911AB6B31D9321C7007981DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AB6B11D9321C7007981DE /* Main.storyboard */; };
 		911AB6B51D9321C7007981DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911AB6B41D9321C7007981DE /* Assets.xcassets */; };
 		911AB6B81D9321C7007981DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AB6B61D9321C7007981DE /* LaunchScreen.storyboard */; };
+		911AB6C01D932DF7007981DE /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6BF1D932DF7007981DE /* FavoritesViewController.swift */; };
+		911AB6C61D933526007981DE /* SpotifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6C51D933526007981DE /* SpotifyClient.swift */; };
+		911AB6C81D933551007981DE /* SpotifyConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6C71D933551007981DE /* SpotifyConvenience.swift */; };
+		911AB6CA1D9339FD007981DE /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6C91D9339FD007981DE /* Track.swift */; };
+		911AB6CE1D935604007981DE /* TrackResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CD1D935604007981DE /* TrackResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		911AB6A81D9321C7007981DE /* Musicly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musicly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		911AB6AB1D9321C7007981DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		911AB6AD1D9321C7007981DE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		911AB6AF1D9321C7007981DE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		911AB6AD1D9321C7007981DE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		911AB6AF1D9321C7007981DE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		911AB6B21D9321C7007981DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		911AB6B41D9321C7007981DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		911AB6B71D9321C7007981DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		911AB6B91D9321C7007981DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		911AB6BF1D932DF7007981DE /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		911AB6C51D933526007981DE /* SpotifyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyClient.swift; sourceTree = "<group>"; };
+		911AB6C71D933551007981DE /* SpotifyConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyConvenience.swift; sourceTree = "<group>"; };
+		911AB6C91D9339FD007981DE /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		911AB6CD1D935604007981DE /* TrackResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,52 @@
 		911AB6AA1D9321C7007981DE /* Musicly */ = {
 			isa = PBXGroup;
 			children = (
+				911AB6C41D933512007981DE /* Spotify */,
+				911AB6C31D932E17007981DE /* View */,
+				911AB6C21D932E10007981DE /* Model */,
+				911AB6C11D932E0A007981DE /* Controller */,
 				911AB6AB1D9321C7007981DE /* AppDelegate.swift */,
-				911AB6AD1D9321C7007981DE /* FirstViewController.swift */,
-				911AB6AF1D9321C7007981DE /* SecondViewController.swift */,
-				911AB6B11D9321C7007981DE /* Main.storyboard */,
 				911AB6B41D9321C7007981DE /* Assets.xcassets */,
-				911AB6B61D9321C7007981DE /* LaunchScreen.storyboard */,
 				911AB6B91D9321C7007981DE /* Info.plist */,
 			);
 			path = Musicly;
+			sourceTree = "<group>";
+		};
+		911AB6C11D932E0A007981DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				911AB6AD1D9321C7007981DE /* HomeViewController.swift */,
+				911AB6AF1D9321C7007981DE /* SearchViewController.swift */,
+				911AB6BF1D932DF7007981DE /* FavoritesViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		911AB6C21D932E10007981DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				911AB6C91D9339FD007981DE /* Track.swift */,
+				911AB6CD1D935604007981DE /* TrackResults.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		911AB6C31D932E17007981DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				911AB6B11D9321C7007981DE /* Main.storyboard */,
+				911AB6B61D9321C7007981DE /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		911AB6C41D933512007981DE /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				911AB6C51D933526007981DE /* SpotifyClient.swift */,
+				911AB6C71D933551007981DE /* SpotifyConvenience.swift */,
+			);
+			name = Spotify;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +146,7 @@
 				TargetAttributes = {
 					911AB6A71D9321C7007981DE = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = PW5CGBBSUC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,9 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				911AB6B01D9321C7007981DE /* SecondViewController.swift in Sources */,
+				911AB6C81D933551007981DE /* SpotifyConvenience.swift in Sources */,
+				911AB6B01D9321C7007981DE /* SearchViewController.swift in Sources */,
 				911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */,
-				911AB6AE1D9321C7007981DE /* FirstViewController.swift in Sources */,
+				911AB6C01D932DF7007981DE /* FavoritesViewController.swift in Sources */,
+				911AB6CE1D935604007981DE /* TrackResults.swift in Sources */,
+				911AB6C61D933526007981DE /* SpotifyClient.swift in Sources */,
+				911AB6AE1D9321C7007981DE /* HomeViewController.swift in Sources */,
+				911AB6CA1D9339FD007981DE /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PW5CGBBSUC;
 				INFOPLIST_FILE = Musicly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SeanPerez.Musicly;
@@ -274,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PW5CGBBSUC;
 				INFOPLIST_FILE = Musicly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SeanPerez.Musicly;

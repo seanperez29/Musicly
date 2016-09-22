@@ -46,40 +46,45 @@ extension SpotifyClient {
                 displayError("Cannot find key 'items' in \(tracks)")
                 return
             }
-            for i in 0..<items.count {
-                var newTrack = Track()
-                let item = items[i] as! [String:AnyObject]
-                let name = item["name"] as! String
-                newTrack.songName = name
-                
-                let previewURL = item["preview_url"] as! String
-                newTrack.mediaURL = previewURL
-                
-                guard let artists = item["artists"] else {
-                    displayError("Cannot find key 'artists' in \(item)")
-                    return
-                }
-                let artistArray = artists[0] as! [String:AnyObject]
-                let artist = artistArray["name"] as! String
-                newTrack.artistName = artist
-                
-                guard let albumArray = item["album"] as? [String:AnyObject] else {
-                    displayError("Cannot find key 'album' in \(item)")
-                    return
-                }
-                guard let images = albumArray["images"] else {
-                    displayError("Cannot find key 'images' in \(albumArray)")
-                    return
-                }
-                let imageDict = images[1] as! [String:AnyObject]
-                let albumURL = imageDict["url"] as! String
-                newTrack.albumURL = albumURL
-                TrackResults.sharedInstance.tracks.append(newTrack)
-            }
+            self.getTracksFromResults(items)
             completionHandler(parsedResult as AnyObject?, nil)
         }
         task.resume()
     }
+    
+    func getTracksFromResults(_ items: AnyObject) {
+        for i in 0..<items.count {
+            var newTrack = Track()
+            let item = items[i] as! [String:AnyObject]
+            let name = item["name"] as! String
+            newTrack.songName = name
+            
+            let previewURL = item["preview_url"] as! String
+            newTrack.mediaURL = previewURL
+   
+            guard let artists = item["artists"] else {
+                print("Cannot find key 'artists' in \(item)")
+                return
+            }
+            let artistArray = artists[0] as! [String:AnyObject]
+            let artist = artistArray["name"] as! String
+            newTrack.artistName = artist
+
+            guard let albumArray = item["album"] as? [String:AnyObject] else {
+                print("Cannot find key 'album' in \(item)")
+                return
+            }
+            guard let images = albumArray["images"] else {
+                print("Cannot find key 'images' in \(albumArray)")
+                return
+            }
+            let imageDict = images[1] as! [String:AnyObject]
+            let albumURL = imageDict["url"] as! String
+            newTrack.albumURL = albumURL
+            TrackResults.sharedInstance.tracks.append(newTrack)
+        }
+    }
+    
 }
 
 

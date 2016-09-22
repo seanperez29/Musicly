@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-xC-eJp">
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="Jdz-jU-MW3"/>
                                 </connections>
@@ -137,7 +137,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart_selected_icon-1" id="zGa-mQ-JJ1"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart_selected_icon" id="zGa-mQ-JJ1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kU4-ZM-QOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -171,7 +171,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart_selected_icon-1" width="20" height="19"/>
+        <image name="heart_selected_icon" width="20" height="19"/>
         <image name="menubtn" width="20" height="14"/>
         <image name="searchbtn" width="20" height="20"/>
     </resources>

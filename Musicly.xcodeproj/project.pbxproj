@@ -20,6 +20,7 @@
 		911AB6CE1D935604007981DE /* TrackResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CD1D935604007981DE /* TrackResults.swift */; };
 		911AB6D01D936AE7007981DE /* TracksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CF1D936AE7007981DE /* TracksTableViewCell.swift */; };
 		911AB6D21D9370D2007981DE /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6D11D9370D2007981DE /* GCDBlackBox.swift */; };
+		911AB6D41D93853E007981DE /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		911AB6CD1D935604007981DE /* TrackResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackResults.swift; sourceTree = "<group>"; };
 		911AB6CF1D936AE7007981DE /* TracksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksTableViewCell.swift; sourceTree = "<group>"; };
 		911AB6D11D9370D2007981DE /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				911AB6B11D9321C7007981DE /* Main.storyboard */,
 				911AB6B61D9321C7007981DE /* LaunchScreen.storyboard */,
+				911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				911AB6C61D933526007981DE /* SpotifyClient.swift in Sources */,
 				911AB6AE1D9321C7007981DE /* HomeViewController.swift in Sources */,
 				911AB6CA1D9339FD007981DE /* Track.swift in Sources */,
+				911AB6D41D93853E007981DE /* UIImageView+DownloadImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

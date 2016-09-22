@@ -13,17 +13,21 @@ class TracksTableViewCell: UITableViewCell {
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
+    var downloadTask: URLSessionDownloadTask?
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func configureCell(_ searchResult: Track) {
+        artistNameLabel.text = searchResult.artistName
+        songNameLabel.text = searchResult.songName
+        if let url = URL(string: searchResult.albumURL) {
+            downloadTask = albumImage.loadImageWithURL(url)
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override func prepareForReuse() {
+        downloadTask?.cancel()
+        downloadTask = nil
+        artistNameLabel.text = nil
+        songNameLabel.text = nil
+        albumImage.image = nil
     }
-
 }

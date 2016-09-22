@@ -52,8 +52,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! TracksTableViewCell
         let track = TrackResults.sharedInstance.tracks[(indexPath as NSIndexPath).row]
-        cell.artistNameLabel.text = track.artistName
-        cell.songNameLabel.text = track.songName
+        cell.configureCell(track)
         return cell
     }
 }

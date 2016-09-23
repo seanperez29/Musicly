@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9116FE901D9527DD009A5BDA /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */; };
+		9116FE921D95317F009A5BDA /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116FE911D95317F009A5BDA /* GradientView.swift */; };
 		911A3D5A1D94616A0002C0C0 /* NoSearchResultsFound.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */; };
 		911A3D5E1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A3D5D1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift */; };
 		911A3D601D9473190002C0C0 /* PlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A3D5F1D9473190002C0C0 /* PlayAudioViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		9116FE911D95317F009A5BDA /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSearchResultsFound.xib; sourceTree = "<group>"; };
 		911A3D5D1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSearchResultsTableViewCell.swift; sourceTree = "<group>"; };
 		911A3D5F1D9473190002C0C0 /* PlayAudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayAudioViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */,
 				911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */,
 				9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */,
+				9116FE911D95317F009A5BDA /* GradientView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				911AB6C81D933551007981DE /* SpotifyConvenience.swift in Sources */,
 				9116FE901D9527DD009A5BDA /* DimmingPresentationController.swift in Sources */,
+				9116FE921D95317F009A5BDA /* GradientView.swift in Sources */,
 				911A3D5E1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift in Sources */,
 				911AB6B01D9321C7007981DE /* SearchViewController.swift in Sources */,
 				911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */,

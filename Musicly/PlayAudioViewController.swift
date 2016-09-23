@@ -21,6 +21,7 @@ class PlayAudioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTrackDetails()
+        view.backgroundColor = UIColor.clear
         let tap = UITapGestureRecognizer(target: self, action: #selector(PlayAudioViewController.closeButtonPressed(_:)))
         tap.cancelsTouchesInView = false
         tap.delegate = self

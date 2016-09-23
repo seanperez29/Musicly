@@ -18,6 +18,9 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         let cellNib = UINib(nibName: "NoSearchResultsFound", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "NoSearchResultsFound")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     func performSearch() {
@@ -36,6 +39,18 @@ class SearchViewController: UIViewController {
         }
     }
     
+    func dismissKeyboard() {
+        searchBar.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PlayAudio" {
+            let playAudioViewController = segue.destination as! PlayAudioViewController
+            let indexPath = sender as! NSIndexPath
+            let artistTrack = TrackResults.sharedInstance.tracks[indexPath.row]
+            playAudioViewController.artistTrack = artistTrack
+        }
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -57,7 +72,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if  TrackResults.sharedInstance.tracks.count == 0 {
+        if TrackResults.sharedInstance.tracks.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "NoSearchResultsFound", for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! TracksTableViewCell
@@ -71,6 +86,4 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
-
 

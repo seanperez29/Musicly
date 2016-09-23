@@ -38,7 +38,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Artist, album, or song" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-xC-eJp">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search artist, album, or song" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-xC-eJp">
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="Jdz-jU-MW3"/>
@@ -137,7 +137,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-xf-WOG" userLabel="Pop-up View">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-xf-WOG" userLabel="Pop-up View">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wi7-Xy-DY5" userLabel="Close Button">
                                         <constraints>
@@ -149,10 +149,35 @@
                                             <action selector="closeButtonPressed:" destination="LYD-Np-51u" eventType="touchUpInside" id="nmi-SG-Kc3"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zDc-ca-iMf">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="8fn-Wp-Bx3"/>
+                                            <constraint firstAttribute="height" constant="130" id="mw7-jm-Wfr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTk-Hr-7sE">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4T-6j-WYq">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="zDc-ca-iMf" firstAttribute="centerX" secondItem="uwe-xf-WOG" secondAttribute="centerX" id="4Dn-U9-W5W"/>
+                                    <constraint firstItem="DTk-Hr-7sE" firstAttribute="top" secondItem="zDc-ca-iMf" secondAttribute="bottom" constant="8" id="4xL-PE-azs"/>
+                                    <constraint firstItem="G4T-6j-WYq" firstAttribute="top" secondItem="DTk-Hr-7sE" secondAttribute="bottom" constant="8" id="71T-Ru-LCu"/>
                                     <constraint firstItem="Wi7-Xy-DY5" firstAttribute="top" secondItem="uwe-xf-WOG" secondAttribute="top" constant="3" id="AbY-1a-LNy"/>
+                                    <constraint firstAttribute="trailing" secondItem="G4T-6j-WYq" secondAttribute="trailing" constant="8" id="DeW-iN-1RA"/>
+                                    <constraint firstItem="G4T-6j-WYq" firstAttribute="leading" secondItem="uwe-xf-WOG" secondAttribute="leading" constant="8" id="IYN-Mo-MiT"/>
+                                    <constraint firstAttribute="trailing" secondItem="DTk-Hr-7sE" secondAttribute="trailing" constant="8" id="Rt4-ut-Dph"/>
+                                    <constraint firstItem="DTk-Hr-7sE" firstAttribute="top" secondItem="zDc-ca-iMf" secondAttribute="bottom" constant="8" id="Sro-IJ-HDT"/>
+                                    <constraint firstItem="DTk-Hr-7sE" firstAttribute="leading" secondItem="uwe-xf-WOG" secondAttribute="leading" constant="8" id="f0u-0e-WBB"/>
+                                    <constraint firstItem="zDc-ca-iMf" firstAttribute="top" secondItem="uwe-xf-WOG" secondAttribute="top" constant="8" id="jr5-VF-XDU"/>
                                     <constraint firstAttribute="height" constant="240" id="mQ2-FI-7CN"/>
                                     <constraint firstAttribute="trailing" secondItem="Wi7-Xy-DY5" secondAttribute="trailing" constant="3" id="qSn-Id-L69"/>
                                     <constraint firstAttribute="width" constant="240" id="rMO-2n-BBM"/>
@@ -165,10 +190,16 @@
                             <constraint firstItem="uwe-xf-WOG" firstAttribute="centerX" secondItem="gNH-C2-58I" secondAttribute="centerX" id="uRy-hG-jKg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="albumImage" destination="zDc-ca-iMf" id="W2W-Wc-Gx2"/>
+                        <outlet property="artistNameLabel" destination="DTk-Hr-7sE" id="k7S-61-sxH"/>
+                        <outlet property="popupView" destination="uwe-xf-WOG" id="pGS-Mn-vLj"/>
+                        <outlet property="songNameLabel" destination="G4T-6j-WYq" id="h6z-qw-9Rb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ObH-Z1-DbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="497"/>
+            <point key="canvasLocation" x="1732" y="496.10194902548727"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="yqT-uS-6lM">

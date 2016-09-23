@@ -16,6 +16,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let searchBarText = searchBar.value(forKey: "searchField") as! UITextField
+        searchBarText.textColor = UIColor.white
         let cellNib = UINib(nibName: "NoSearchResultsFound", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "NoSearchResultsFound")
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, TracksTableViewCellDelegate {
+class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -27,7 +27,7 @@ class SearchViewController: UIViewController, TracksTableViewCellDelegate {
     
     func performSearch() {
         searchBar.resignFirstResponder()
-        TrackResults.sharedInstance.tracks.removeAll(keepingCapacity: true)
+        AudioTrackResults.sharedInstance.audioTracks.removeAll(keepingCapacity: true)
         if let searchtext = searchBar.text {
             SpotifyClient.sharedInstance.loadTracks(searchtext, completionHandler: { (result, errorString) in
                 guard (errorString == nil) else {
@@ -49,14 +49,14 @@ class SearchViewController: UIViewController, TracksTableViewCellDelegate {
         if segue.identifier == "PlayAudio" {
             let playAudioViewController = segue.destination as! PlayAudioViewController
             let indexPath = sender as! NSIndexPath
-            let artistTrack = TrackResults.sharedInstance.tracks[indexPath.row]
-            playAudioViewController.artistTrack = artistTrack
+            let audioTrack = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
+            playAudioViewController.audioTrack = audioTrack
         }
     }
     
-    func trackTableViewCell(cell: TracksTableViewCell, didPressFavorited button: UIButton) {
+    func audioTrackTableViewCell(cell: AudioTrackTableViewCell, didPressFavorited button: UIButton) {
         if let indexPath = tableView.indexPath(for: cell) {
-            let track = TrackResults.sharedInstance.tracks[indexPath.row]
+            let track = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
             track.hasFavorited = !track.hasFavorited
             cell.configureCheckmarkForCell(track: track)
         }
@@ -75,21 +75,20 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if TrackResults.sharedInstance.tracks.count == 0 && hasSearched {
+        if AudioTrackResults.sharedInstance.audioTracks.count == 0 && hasSearched {
             return 1
         } else {
-            return TrackResults.sharedInstance.tracks.count
+            return AudioTrackResults.sharedInstance.audioTracks.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if TrackResults.sharedInstance.tracks.count == 0 {
+        if AudioTrackResults.sharedInstance.audioTracks.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "NoSearchResultsFound", for: indexPath)
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! TracksTableViewCell
-            let track = TrackResults.sharedInstance.tracks[(indexPath as NSIndexPath).row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! AudioTrackTableViewCell
+            let track = AudioTrackResults.sharedInstance.audioTracks[(indexPath as NSIndexPath).row]
             cell.delegate = self
             cell.configureCell(track)
-            cell.configureCheckmarkForCell(track: track)
             return cell
         }
     }

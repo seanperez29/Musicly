@@ -1,5 +1,5 @@
 //
-//  Track.swift
+//  AudioTrack.swift
 //  Musicly
 //
 //  Created by Sean Perez on 9/21/16.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Track {
+class AudioTrack {
     
     var artistName: String!
     var songName: String!

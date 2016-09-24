@@ -15,7 +15,7 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var popupView: UIView!
-    var artistTrack: Track!
+    var audioTrack: AudioTrack!
     var downloadTask: URLSessionDownloadTask?
     
     override func viewDidLoad() {
@@ -30,11 +30,11 @@ class PlayAudioViewController: UIViewController {
     }
     
     func loadTrackDetails() {
-        if let url = URL(string: artistTrack.albumURL) {
+        if let url = URL(string: audioTrack.albumURL) {
            downloadTask = albumImage.loadImageWithURL(url)
         }
-        artistNameLabel.text = artistTrack.artistName
-        songNameLabel.text = artistTrack.songName
+        artistNameLabel.text = audioTrack.artistName
+        songNameLabel.text = audioTrack.songName
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -1,5 +1,5 @@
 //
-//  TracksTableViewCell.swift
+//  AudioTrackTableViewCell.swift
 //  Musicly
 //
 //  Created by Sean Perez on 9/21/16.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol TracksTableViewCellDelegate: class {
-    func trackTableViewCell(cell: TracksTableViewCell, didPressFavorited button: UIButton)
+protocol AudioTrackTableViewCellDelegate: class {
+    func audioTrackTableViewCell(cell: AudioTrackTableViewCell, didPressFavorited button: UIButton)
 }
 
-class TracksTableViewCell: UITableViewCell {
+class AudioTrackTableViewCell: UITableViewCell {
     
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     var downloadTask: URLSessionDownloadTask?
-    weak var delegate: TracksTableViewCellDelegate?
+    weak var delegate: AudioTrackTableViewCellDelegate?
     
     func configureCell(_ searchResult: Track) {
         artistNameLabel.text = searchResult.artistName
@@ -27,10 +27,11 @@ class TracksTableViewCell: UITableViewCell {
         if let url = URL(string: searchResult.albumURL) {
             downloadTask = albumImage.loadImageWithURL(url)
         }
+        configureCheckmarkForCell(track: searchResult)
     }
     
     @IBAction func favoriteButtonPressed(_ sender: AnyObject) {
-        delegate?.trackTableViewCell(cell: self, didPressFavorited: sender as! UIButton)
+        delegate?.audioTrackTableViewCell(cell: self, didPressFavorited: sender as! UIButton)
     }
     
     func configureCheckmarkForCell(track: Track) {

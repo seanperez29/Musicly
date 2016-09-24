@@ -82,8 +82,8 @@ extension SpotifyClient {
             let imageDict = images[1] as! [String:AnyObject]
             let albumURL = imageDict["url"]
             dict["albumURL"] = albumURL
-            let newTrack = Track(dictionary: dict as [String:AnyObject])
-            TrackResults.sharedInstance.tracks.append(newTrack)
+            let newTrack = AudioTrack(dictionary: dict as [String:AnyObject])
+            AudioTrackResults.sharedInstance.audioTracks.append(newTrack)
         }
     }
     

@@ -57,10 +57,11 @@ extension SpotifyClient {
             var dict = [String:AnyObject]()
             let item = items[i] as! [String:AnyObject]
             let songName = item["name"]
-            dict["songName"] = songName
-            
             let previewURL = item["preview_url"]
+            let id = item["id"]
+            dict["songName"] = songName
             dict["mediaURL"] = previewURL
+            dict["id"] = id
    
             guard let artists = item["artists"] else {
                 print("Cannot find key 'artists' in \(item)")

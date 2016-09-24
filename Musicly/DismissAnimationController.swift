@@ -14,13 +14,15 @@ class DismissAnimationController: NSObject, UIViewControllerAnimatedTransitionin
         return 0.2
     }
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        if let fromView = transitionContext.view( forKey: UITransitionContextViewKey.from) {
-        let containerView = transitionContext.containerView
+        if let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) {
+            let containerView = transitionContext.containerView
             let duration = transitionDuration(using: transitionContext)
             UIView.animate(withDuration: duration, animations: {
                 fromView.center.y = containerView.center.y
                 fromView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                }, completion: { finished in
-                    transitionContext.completeTransition(finished)
-            }) }
-    } }
+            }, completion: { finished in
+                transitionContext.completeTransition(finished)
+            })
+        }
+    }
+}

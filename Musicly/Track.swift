@@ -7,18 +7,27 @@
 //
 
 import Foundation
+import UIKit
 
-struct Track {
+class Track {
     
     var artistName: String!
     var songName: String!
     var mediaURL: String!
     var albumURL: String!
+    var id: String!
+    var hasFavorited = false
     
     init(dictionary: [String:AnyObject]) {
         artistName = dictionary["artistName"] as! String
         songName = dictionary["songName"] as! String
         mediaURL = dictionary["mediaURL"] as! String
         albumURL = dictionary["albumURL"] as! String
+        id = dictionary["id"] as! String
     }
+    
+    func toggleFavorited() {
+        hasFavorited = !hasFavorited
+    }
+    
 }

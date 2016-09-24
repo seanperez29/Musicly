@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, TracksTableViewCellDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -53,6 +53,14 @@ class SearchViewController: UIViewController {
             playAudioViewController.artistTrack = artistTrack
         }
     }
+    
+    func trackTableViewCell(cell: TracksTableViewCell, didPressFavorited button: UIButton) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let track = TrackResults.sharedInstance.tracks[indexPath.row]
+            track.hasFavorited = !track.hasFavorited
+            cell.configureCheckmarkForCell(track: track)
+        }
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -79,7 +87,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! TracksTableViewCell
             let track = TrackResults.sharedInstance.tracks[(indexPath as NSIndexPath).row]
+            cell.delegate = self
             cell.configureCell(track)
+            cell.configureCheckmarkForCell(track: track)
             return cell
         }
     }

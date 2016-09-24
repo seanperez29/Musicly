@@ -52,7 +52,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7gS-G4-dD4" id="AuL-Jd-WF8">
-                                            <frame key="frameInset" width="375" height="79.5"/>
+                                            <frame key="frameInset" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-Ps-jpO">
@@ -76,23 +76,36 @@
                                                     <color key="textColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" alpha="0.5" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d57-fE-kOb">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="C1b-pq-lh7"/>
+                                                        <constraint firstAttribute="width" constant="40" id="dxL-c4-aAd"/>
+                                                    </constraints>
+                                                    <state key="normal" image="favoriteditem-1"/>
+                                                    <connections>
+                                                        <action selector="favoriteButtonPressed:" destination="7gS-G4-dD4" eventType="touchUpInside" id="zY5-U3-vaQ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="zkK-lg-YDG" firstAttribute="leading" secondItem="5Oq-Ps-jpO" secondAttribute="trailing" constant="8" id="JxU-7j-qHc"/>
                                                 <constraint firstItem="2Pz-SK-7uI" firstAttribute="leading" secondItem="5Oq-Ps-jpO" secondAttribute="trailing" constant="8" id="KFz-1l-9dq"/>
-                                                <constraint firstItem="2Pz-SK-7uI" firstAttribute="trailing" secondItem="AuL-Jd-WF8" secondAttribute="trailingMargin" id="YL5-Ce-pPb"/>
+                                                <constraint firstItem="d57-fE-kOb" firstAttribute="trailing" secondItem="AuL-Jd-WF8" secondAttribute="trailingMargin" constant="-5" id="Le3-ai-3ZI"/>
+                                                <constraint firstItem="d57-fE-kOb" firstAttribute="top" secondItem="AuL-Jd-WF8" secondAttribute="topMargin" constant="11" id="Vid-EC-f5S"/>
+                                                <constraint firstItem="d57-fE-kOb" firstAttribute="leading" secondItem="2Pz-SK-7uI" secondAttribute="trailing" constant="8" id="VyF-Yh-NJj"/>
                                                 <constraint firstItem="5Oq-Ps-jpO" firstAttribute="bottom" secondItem="AuL-Jd-WF8" secondAttribute="bottomMargin" id="dzG-9f-qYg"/>
                                                 <constraint firstItem="2Pz-SK-7uI" firstAttribute="top" secondItem="zkK-lg-YDG" secondAttribute="bottom" constant="8" id="g3z-ov-9he"/>
-                                                <constraint firstItem="zkK-lg-YDG" firstAttribute="trailing" secondItem="AuL-Jd-WF8" secondAttribute="trailingMargin" id="hhK-tw-sXU"/>
                                                 <constraint firstItem="zkK-lg-YDG" firstAttribute="top" secondItem="AuL-Jd-WF8" secondAttribute="topMargin" id="jdC-GG-eIH"/>
                                                 <constraint firstItem="5Oq-Ps-jpO" firstAttribute="top" secondItem="AuL-Jd-WF8" secondAttribute="topMargin" id="ngN-m5-fN1"/>
                                                 <constraint firstItem="5Oq-Ps-jpO" firstAttribute="leading" secondItem="AuL-Jd-WF8" secondAttribute="leadingMargin" id="yTD-2R-pPS"/>
+                                                <constraint firstItem="d57-fE-kOb" firstAttribute="leading" secondItem="zkK-lg-YDG" secondAttribute="trailing" constant="8" id="zFa-iz-Pne"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="albumImage" destination="5Oq-Ps-jpO" id="Zuf-gj-wVR"/>
                                             <outlet property="artistNameLabel" destination="zkK-lg-YDG" id="rgf-nb-UbN"/>
+                                            <outlet property="favoriteButton" destination="d57-fE-kOb" id="1nS-Jn-CJO"/>
                                             <outlet property="songNameLabel" destination="2Pz-SK-7uI" id="Z2B-LW-4hW"/>
                                         </connections>
                                     </tableViewCell>
@@ -248,6 +261,7 @@
     </scenes>
     <resources>
         <image name="Multiply-50" width="50" height="50"/>
+        <image name="favoriteditem-1" width="30" height="30"/>
         <image name="heart_selected_icon" width="20" height="19"/>
         <image name="menubtn" width="20" height="14"/>
         <image name="searchbtn" width="20" height="20"/>

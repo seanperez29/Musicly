@@ -58,14 +58,6 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
         if let indexPath = tableView.indexPath(for: cell) {
             let track = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
             track.hasFavorited = !track.hasFavorited
-            let hudView = HudView.hudInView(view: (tabBarController!.view), animated: true)
-            if track.hasFavorited {
-                hudView.text = "Favorited"
-                hudView.image = "check_icon"
-            } else {
-                hudView.text = "Removed"
-                hudView.image = "cancel_btn"
-            }
             cell.configureCheckmarkForCell(track: track)
         }
     }

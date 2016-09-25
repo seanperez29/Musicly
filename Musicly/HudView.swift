@@ -50,7 +50,7 @@ class HudView: UIView {
         if animated {
             alpha = 0
             transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: 0.2, animations: {
                 self.alpha = 1
                 self.transform = CGAffineTransform.identity
                 }, completion: { _ in
@@ -63,7 +63,7 @@ class HudView: UIView {
         if animated {
             alpha = 1
             transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: 0.4, animations: {
                 self.alpha = 0
                 self.transform = CGAffineTransform.identity
                 view.isUserInteractionEnabled = true

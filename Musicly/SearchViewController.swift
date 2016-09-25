@@ -70,6 +70,14 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
                 hudView.image = "check_icon"
                 print(favorites)
             } else {
+                if let favorite = favorites.artistTrack {
+                    for artistTrack in favorite {
+                        if (artistTrack as! ArtistTrack).trackID == track.id {
+                            CoreDataStack.sharedInstance().context.delete(artistTrack as! NSManagedObject)
+                            CoreDataStack.sharedInstance().save()
+                        }
+                    }
+                }
                 hudView.text = "Removed"
                 hudView.image = "cancel_btn"
             }

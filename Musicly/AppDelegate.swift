@@ -7,15 +7,54 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var favorites: Favorited!
+    
+    func isFirstLaunch() -> Bool {
+        if let notFirstLaunch = UserDefaults.standard.value(forKey: "isFirstLaunch") {
+            return notFirstLaunch as! Bool
+        } else {
+            UserDefaults.standard.setValue(false, forKey: "isFirstLaunch")
+            return true
+        }
+    }
+    
+    func fetchFavorites() -> Favorited {
+        let fetchRequest: NSFetchRequest<Favorited> = Favorited.fetchRequest()
+        let entity = NSEntityDescription.entity(forEntityName: "Favorited", in: CoreDataStack.sharedInstance().context)
+        fetchRequest.entity = entity
+        do {
+            let foundObjects = try CoreDataStack.sharedInstance().context.fetch(fetchRequest)
+            let foundObject = foundObjects[0]
+            return foundObject
+        } catch {
+            fatalError("Could not fetch pins")
+        }
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if isFirstLaunch() {
+            let favorites = Favorited(context: CoreDataStack.sharedInstance().context)
+            self.favorites = favorites
+            CoreDataStack.sharedInstance().save()
+        } else {
+            favorites = fetchFavorites()
+        }
+        let tabBarController = window!.rootViewController as! UITabBarController
+        if let tabBarControllers = tabBarController.viewControllers {
+            let homeViewController = tabBarControllers[0] as! HomeViewController
+            homeViewController.favorites = favorites
+            let searchViewController = tabBarControllers[1] as! SearchViewController
+            searchViewController.favorites = favorites
+            let favoritesViewController = tabBarControllers[2] as! FavoritesViewController
+            favoritesViewController.favorites = favorites
+        }
         return true
     }
 

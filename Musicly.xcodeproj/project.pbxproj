@@ -28,6 +28,13 @@
 		911AB6D01D936AE7007981DE /* AudioTrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CF1D936AE7007981DE /* AudioTrackTableViewCell.swift */; };
 		911AB6D21D9370D2007981DE /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6D11D9370D2007981DE /* GCDBlackBox.swift */; };
 		911AB6D41D93853E007981DE /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */; };
+		912A81181D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81121D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift */; };
+		912A81191D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81131D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift */; };
+		912A811A1D97A3CD0066AB27 /* Favorited+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81141D97A3CD0066AB27 /* Favorited+CoreDataClass.swift */; };
+		912A811B1D97A3CD0066AB27 /* Favorited+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81151D97A3CD0066AB27 /* Favorited+CoreDataProperties.swift */; };
+		912A811C1D97A3CD0066AB27 /* ArtistTrack+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81161D97A3CD0066AB27 /* ArtistTrack+CoreDataClass.swift */; };
+		912A811D1D97A3CD0066AB27 /* ArtistTrack+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81171D97A3CD0066AB27 /* ArtistTrack+CoreDataProperties.swift */; };
+		912A81201D97B0CC0066AB27 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A811F1D97B0CC0066AB27 /* CoreDataStack.swift */; };
 		915105B41D95C83E003B8B58 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915105B31D95C83E003B8B58 /* AnimationController.swift */; };
 		915105B61D95D22C003B8B58 /* DismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915105B51D95D22C003B8B58 /* DismissAnimationController.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +63,13 @@
 		911AB6CF1D936AE7007981DE /* AudioTrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrackTableViewCell.swift; sourceTree = "<group>"; };
 		911AB6D11D9370D2007981DE /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		912A81121D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RecentlyPlayed+CoreDataClass.swift"; path = "../RecentlyPlayed+CoreDataClass.swift"; sourceTree = "<group>"; };
+		912A81131D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RecentlyPlayed+CoreDataProperties.swift"; path = "../RecentlyPlayed+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		912A81141D97A3CD0066AB27 /* Favorited+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Favorited+CoreDataClass.swift"; path = "../Favorited+CoreDataClass.swift"; sourceTree = "<group>"; };
+		912A81151D97A3CD0066AB27 /* Favorited+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Favorited+CoreDataProperties.swift"; path = "../Favorited+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		912A81161D97A3CD0066AB27 /* ArtistTrack+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ArtistTrack+CoreDataClass.swift"; path = "../ArtistTrack+CoreDataClass.swift"; sourceTree = "<group>"; };
+		912A81171D97A3CD0066AB27 /* ArtistTrack+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ArtistTrack+CoreDataProperties.swift"; path = "../ArtistTrack+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		912A811F1D97B0CC0066AB27 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		915105B31D95C83E003B8B58 /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 		915105B51D95D22C003B8B58 /* DismissAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,11 +130,13 @@
 		911AB6C21D932E10007981DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				912A811E1D97A3E60066AB27 /* ManagedObjects */,
 				911AB6C91D9339FD007981DE /* AudioTrack.swift */,
 				911AB6CD1D935604007981DE /* AudioTrackResults.swift */,
 				911AB6CF1D936AE7007981DE /* AudioTrackTableViewCell.swift */,
 				911A3D5D1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift */,
 				91115FFB1D9711F200712B14 /* Model.xcdatamodeld */,
+				912A811F1D97B0CC0066AB27 /* CoreDataStack.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -148,6 +164,19 @@
 				911AB6C71D933551007981DE /* SpotifyConvenience.swift */,
 			);
 			name = Spotify;
+			sourceTree = "<group>";
+		};
+		912A811E1D97A3E60066AB27 /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				912A81121D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift */,
+				912A81131D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift */,
+				912A81141D97A3CD0066AB27 /* Favorited+CoreDataClass.swift */,
+				912A81151D97A3CD0066AB27 /* Favorited+CoreDataProperties.swift */,
+				912A81161D97A3CD0066AB27 /* ArtistTrack+CoreDataClass.swift */,
+				912A81171D97A3CD0066AB27 /* ArtistTrack+CoreDataProperties.swift */,
+			);
+			name = ManagedObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,20 +255,27 @@
 			files = (
 				911AB6C81D933551007981DE /* SpotifyConvenience.swift in Sources */,
 				9116FE901D9527DD009A5BDA /* DimmingPresentationController.swift in Sources */,
+				912A811C1D97A3CD0066AB27 /* ArtistTrack+CoreDataClass.swift in Sources */,
+				912A81181D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift in Sources */,
 				9116FE921D95317F009A5BDA /* GradientView.swift in Sources */,
 				911A3D5E1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift in Sources */,
 				911AB6B01D9321C7007981DE /* SearchViewController.swift in Sources */,
 				911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */,
 				911AB6C01D932DF7007981DE /* FavoritesViewController.swift in Sources */,
 				911A3D601D9473190002C0C0 /* PlayAudioViewController.swift in Sources */,
+				912A811B1D97A3CD0066AB27 /* Favorited+CoreDataProperties.swift in Sources */,
 				91115FFA1D97040E00712B14 /* HudView.swift in Sources */,
 				915105B41D95C83E003B8B58 /* AnimationController.swift in Sources */,
 				911AB6D21D9370D2007981DE /* GCDBlackBox.swift in Sources */,
+				912A811D1D97A3CD0066AB27 /* ArtistTrack+CoreDataProperties.swift in Sources */,
 				911AB6CE1D935604007981DE /* AudioTrackResults.swift in Sources */,
 				911AB6D01D936AE7007981DE /* AudioTrackTableViewCell.swift in Sources */,
 				915105B61D95D22C003B8B58 /* DismissAnimationController.swift in Sources */,
 				911AB6C61D933526007981DE /* SpotifyClient.swift in Sources */,
+				912A81201D97B0CC0066AB27 /* CoreDataStack.swift in Sources */,
 				911AB6AE1D9321C7007981DE /* HomeViewController.swift in Sources */,
+				912A81191D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift in Sources */,
+				912A811A1D97A3CD0066AB27 /* Favorited+CoreDataClass.swift in Sources */,
 				911AB6CA1D9339FD007981DE /* AudioTrack.swift in Sources */,
 				91115FFD1D9711F200712B14 /* Model.xcdatamodeld in Sources */,
 				911AB6D41D93853E007981DE /* UIImageView+DownloadImage.swift in Sources */,
@@ -368,6 +404,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SeanPerez.Musicly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

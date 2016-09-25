@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ArtistTrack" syncable="YES">
-        <attribute name="album" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="media" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="song" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="trackID" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="ArtistTrack" representedClassName=".ArtistTrack" syncable="YES">
+        <attribute name="album" attributeType="String" syncable="YES"/>
+        <attribute name="artist" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="media" attributeType="String" syncable="YES"/>
+        <attribute name="song" attributeType="String" syncable="YES"/>
+        <attribute name="trackID" attributeType="String" syncable="YES"/>
         <relationship name="favorited" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorited" inverseName="artistTrack" inverseEntity="Favorited" syncable="YES"/>
         <relationship name="recentlyPlayed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecentlyPlayed" inverseName="artistTrack" inverseEntity="RecentlyPlayed" syncable="YES"/>
     </entity>
-    <entity name="Favorited" syncable="YES">
+    <entity name="Favorited" representedClassName=".Favorited" syncable="YES">
         <relationship name="artistTrack" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArtistTrack" inverseName="favorited" inverseEntity="ArtistTrack" syncable="YES"/>
     </entity>
-    <entity name="RecentlyPlayed" syncable="YES">
-        <relationship name="artistTrack" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArtistTrack" inverseName="recentlyPlayed" inverseEntity="ArtistTrack" syncable="YES"/>
+    <entity name="RecentlyPlayed" representedClassName=".RecentlyPlayed" syncable="YES">
+        <relationship name="artistTrack" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArtistTrack" inverseName="recentlyPlayed" inverseEntity="ArtistTrack" syncable="YES"/>
     </entity>
     <elements>
         <element name="ArtistTrack" positionX="-63" positionY="-18" width="128" height="180"/>

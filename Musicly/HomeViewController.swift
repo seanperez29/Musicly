@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController {
-
+    
+    var favorites: Favorited!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
-
+    
 }
 

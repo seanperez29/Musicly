@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var hasSearched = false
+    var favorites: Favorited!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        print(favorites)
     }
     
     func performSearch() {
@@ -60,8 +63,12 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
             track.hasFavorited = !track.hasFavorited
             let hudView = HudView.hudInView(view: (tabBarController!.view), animated: true)
             if track.hasFavorited {
+                let newArtistTrack = ArtistTrack(audioTrack: track, context: CoreDataStack.sharedInstance().context)
+                favorites.addToArtistTrack(newArtistTrack)
+                CoreDataStack.sharedInstance().save()
                 hudView.text = "Favorited"
                 hudView.image = "check_icon"
+                print(favorites)
             } else {
                 hudView.text = "Removed"
                 hudView.image = "cancel_btn"

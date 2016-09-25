@@ -36,9 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Could not fetch pins")
         }
     }
-
+    
+    func setNavigationBarColor() {
+        UINavigationBar.appearance().barTintColor = UIColor(displayP3Red: 71/255, green: 71/255, blue: 71/255, alpha: 0.5)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        setNavigationBarColor()
         if isFirstLaunch() {
             let favorites = Favorited(context: CoreDataStack.sharedInstance().context)
             self.favorites = favorites
@@ -52,7 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             homeViewController.favorites = favorites
             let searchViewController = tabBarControllers[1] as! SearchViewController
             searchViewController.favorites = favorites
-            let favoritesViewController = tabBarControllers[2] as! FavoritesViewController
+            let navigationController = tabBarControllers[2] as! UINavigationController
+            let favoritesViewController = navigationController.viewControllers[0] as! FavoritesViewController
             favoritesViewController.favorites = favorites
         }
         return true

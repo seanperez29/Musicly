@@ -100,7 +100,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if AudioTrackResults.sharedInstance.audioTracks.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "NoSearchResultsFound", for: indexPath)
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! AudioTrackTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! AudioTrackTableViewCell
             let track = AudioTrackResults.sharedInstance.audioTracks[(indexPath as NSIndexPath).row]
             cell.delegate = self
             cell.configureCell(track)

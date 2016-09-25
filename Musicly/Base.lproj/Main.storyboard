@@ -26,6 +26,71 @@
             </objects>
             <point key="canvasLocation" x="969" y="-350"/>
         </scene>
+        <!--Favorites-->
+        <scene sceneID="4Pa-mc-XYo">
+            <objects>
+                <tableViewController title="Favorites" id="vrU-59-Lyu" customClass="FavoritesViewController" customModule="Musicly" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="REW-AT-vre">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritesCell" rowHeight="80" id="bNI-IP-6O6" customClass="FavoritesTableViewCell" customModule="Musicly" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bNI-IP-6O6" id="GPv-me-TPy">
+                                    <frame key="frameInset" width="375" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GnG-RF-SO5">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="AHB-We-8uh"/>
+                                                <constraint firstAttribute="height" constant="64" id="UGP-DW-P4J"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUQ-E6-OtA">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1do-EQ-ox7">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1do-EQ-ox7" firstAttribute="trailing" secondItem="GPv-me-TPy" secondAttribute="trailingMargin" id="27O-Qs-aXK"/>
+                                        <constraint firstItem="dUQ-E6-OtA" firstAttribute="leading" secondItem="GnG-RF-SO5" secondAttribute="trailing" constant="8" id="4TU-RX-OMe"/>
+                                        <constraint firstItem="GnG-RF-SO5" firstAttribute="top" secondItem="GPv-me-TPy" secondAttribute="top" constant="7" id="9R5-R2-yHx"/>
+                                        <constraint firstItem="GnG-RF-SO5" firstAttribute="leading" secondItem="GPv-me-TPy" secondAttribute="leading" constant="8" id="JFF-Fq-h7S"/>
+                                        <constraint firstItem="1do-EQ-ox7" firstAttribute="leading" secondItem="GnG-RF-SO5" secondAttribute="trailing" constant="8" id="NHU-8q-Qy2"/>
+                                        <constraint firstItem="dUQ-E6-OtA" firstAttribute="trailing" secondItem="GPv-me-TPy" secondAttribute="trailingMargin" id="Pxb-zw-wG1"/>
+                                        <constraint firstAttribute="bottom" secondItem="GnG-RF-SO5" secondAttribute="bottom" constant="8" id="dAp-GA-o4x"/>
+                                        <constraint firstItem="1do-EQ-ox7" firstAttribute="top" secondItem="dUQ-E6-OtA" secondAttribute="bottom" constant="8" id="eYy-Kw-Szg"/>
+                                        <constraint firstItem="dUQ-E6-OtA" firstAttribute="top" secondItem="GPv-me-TPy" secondAttribute="topMargin" id="yJU-ar-HSP"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="albumImage" destination="GnG-RF-SO5" id="qaD-eL-L5a"/>
+                                    <outlet property="artistNameLabel" destination="dUQ-E6-OtA" id="Vlc-bp-wuH"/>
+                                    <outlet property="songNameLabel" destination="1do-EQ-ox7" id="XMa-H0-pq1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vrU-59-Lyu" id="74r-dB-BsL"/>
+                            <outlet property="delegate" destination="vrU-59-Lyu" id="T7H-1A-pAT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorites" id="o4M-td-jYj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fG8-MH-8bv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2767.1999999999998" y="-331.48425787106447"/>
+        </scene>
         <!--Search-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -48,7 +113,7 @@
                                 <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" rowHeight="80" id="7gS-G4-dD4" customClass="AudioTrackTableViewCell" customModule="Musicly" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="80" id="7gS-G4-dD4" customClass="AudioTrackTableViewCell" customModule="Musicly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7gS-G4-dD4" id="AuL-Jd-WF8">
@@ -57,7 +122,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-Ps-jpO">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="63" id="Zq4-sb-2hZ"/>
+                                                        <constraint firstAttribute="width" constant="64" id="Zq4-sb-2hZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkK-lg-YDG">
@@ -213,25 +278,6 @@
             </objects>
             <point key="canvasLocation" x="1732" y="496.10194902548727"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="yqT-uS-6lM">
-            <objects>
-                <viewController id="IXA-EM-hKM" customClass="FavoritesViewController" customModule="Musicly" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WMV-P0-hUn"/>
-                        <viewControllerLayoutGuide type="bottom" id="sZS-Cn-XYf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vfS-Jz-1x4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart_selected_icon" id="zGa-mQ-JJ1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kU4-ZM-QOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1732" y="-248"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -251,12 +297,31 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="IXA-EM-hKM" kind="relationship" relationship="viewControllers" id="IH6-ch-ToZ"/>
+                        <segue destination="0jq-Ut-33K" kind="relationship" relationship="viewControllers" id="1wK-Om-G9m"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="VvB-so-EuW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0jq-Ut-33K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart_selected_icon" id="gMj-Mo-wdb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1OT-nz-8bV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vrU-59-Lyu" kind="relationship" relationship="rootViewController" id="4gX-S7-kaY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXp-4m-Chg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828" y="-331.48425787106447"/>
         </scene>
     </scenes>
     <resources>

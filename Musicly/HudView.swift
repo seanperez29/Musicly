@@ -50,10 +50,10 @@ class HudView: UIView {
         if animated {
             alpha = 0
             transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
                 self.alpha = 1
                 self.transform = CGAffineTransform.identity
-                }, completion: { _ in
+                }, completion: { (true) in
                     self.hideAnimated(view: view, animated: animated)
             })
         }
@@ -63,11 +63,11 @@ class HudView: UIView {
         if animated {
             alpha = 1
             transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [], animations: {
                 self.alpha = 0
                 self.transform = CGAffineTransform.identity
                 view.isUserInteractionEnabled = true
-            })
+                }, completion: nil)
         }
     }
     

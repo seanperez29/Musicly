@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
+class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, FavoritesViewControllerDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -25,9 +25,8 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-        print(favorites)
     }
-    
+        
     func performSearch() {
         searchBar.resignFirstResponder()
         AudioTrackResults.sharedInstance.audioTracks.removeAll(keepingCapacity: true)
@@ -54,6 +53,16 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate {
             let indexPath = sender as! NSIndexPath
             let audioTrack = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
             playAudioViewController.audioTrack = audioTrack
+        }
+    }
+    
+    func favoritesViewController(viewController: FavoritesViewController, didDeleteTrack track: ArtistTrack) {
+        print("WE HAVE ENTERED DELEGATE")
+        for artistTrack in AudioTrackResults.sharedInstance.audioTracks {
+            if artistTrack.id == track.trackID {
+                artistTrack.hasFavorited = false
+                tableView.reloadData()
+            }
         }
     }
     

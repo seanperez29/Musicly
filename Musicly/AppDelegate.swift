@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = tabBarControllers[2] as! UINavigationController
             let favoritesViewController = navigationController.viewControllers[0] as! FavoritesViewController
             favoritesViewController.favorites = favorites
+            favoritesViewController.delegate = searchViewController
         }
         return true
     }

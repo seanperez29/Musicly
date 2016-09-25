@@ -9,9 +9,14 @@
 import UIKit
 import CoreData
 
+protocol FavoritesViewControllerDelegate: class {
+    func favoritesViewController(viewController: FavoritesViewController, didDeleteTrack track: ArtistTrack)
+}
+
 class FavoritesViewController: UITableViewController {
     
     var favorites: Favorited!
+    weak var delegate: FavoritesViewControllerDelegate?
     lazy var fetchedResultsController: NSFetchedResultsController<ArtistTrack> = {
        let fetchRequest = NSFetchRequest<ArtistTrack>()
         let entity = ArtistTrack.entity()
@@ -54,6 +59,7 @@ extension FavoritesViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let artistTrack = fetchedResultsController.object(at: indexPath)
+            delegate?.favoritesViewController(viewController: self, didDeleteTrack: artistTrack)
             CoreDataStack.sharedInstance().context.delete(artistTrack)
             CoreDataStack.sharedInstance().save()
         }

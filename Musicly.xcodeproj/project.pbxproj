@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
 		91115FFA1D97040E00712B14 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91115FF91D97040E00712B14 /* HudView.swift */; };
 		91115FFD1D9711F200712B14 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91115FFB1D9711F200712B14 /* Model.xcdatamodeld */; };
-||||||| 10dbc9d... Add HudView animation to 'SearchViewController'
-		91115FFA1D97040E00712B14 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91115FF91D97040E00712B14 /* HudView.swift */; };
-=======
->>>>>>> parent of 10dbc9d... Add HudView animation to 'SearchViewController'
 		9116FE901D9527DD009A5BDA /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */; };
 		9116FE921D95317F009A5BDA /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116FE911D95317F009A5BDA /* GradientView.swift */; };
 		911A3D5A1D94616A0002C0C0 /* NoSearchResultsFound.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */; };
@@ -38,13 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
 		91115FF91D97040E00712B14 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		91115FFC1D9711F200712B14 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-||||||| 10dbc9d... Add HudView animation to 'SearchViewController'
-		91115FF91D97040E00712B14 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
-=======
->>>>>>> parent of 10dbc9d... Add HudView animation to 'SearchViewController'
 		9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		9116FE911D95317F009A5BDA /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSearchResultsFound.xib; sourceTree = "<group>"; };
@@ -146,6 +136,7 @@
 				9116FE911D95317F009A5BDA /* GradientView.swift */,
 				915105B31D95C83E003B8B58 /* AnimationController.swift */,
 				915105B51D95D22C003B8B58 /* DismissAnimationController.swift */,
+				91115FF91D97040E00712B14 /* HudView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -241,6 +232,7 @@
 				911AB6AC1D9321C7007981DE /* AppDelegate.swift in Sources */,
 				911AB6C01D932DF7007981DE /* FavoritesViewController.swift in Sources */,
 				911A3D601D9473190002C0C0 /* PlayAudioViewController.swift in Sources */,
+				91115FFA1D97040E00712B14 /* HudView.swift in Sources */,
 				915105B41D95C83E003B8B58 /* AnimationController.swift in Sources */,
 				911AB6D21D9370D2007981DE /* GCDBlackBox.swift in Sources */,
 				911AB6CE1D935604007981DE /* AudioTrackResults.swift in Sources */,

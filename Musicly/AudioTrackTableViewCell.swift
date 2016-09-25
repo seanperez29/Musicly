@@ -21,7 +21,7 @@ class AudioTrackTableViewCell: UITableViewCell {
     var downloadTask: URLSessionDownloadTask?
     weak var delegate: AudioTrackTableViewCellDelegate?
     
-    func configureCell(_ searchResult: AudioTrack) {
+    func configureCell(_ searchResult: Track) {
         artistNameLabel.text = searchResult.artistName
         songNameLabel.text = searchResult.songName
         if let url = URL(string: searchResult.albumURL) {
@@ -34,12 +34,10 @@ class AudioTrackTableViewCell: UITableViewCell {
         delegate?.audioTrackTableViewCell(cell: self, didPressFavorited: sender as! UIButton)
     }
     
-    func configureCheckmarkForCell(track: AudioTrack) {
+    func configureCheckmarkForCell(track: Track) {
         if track.hasFavorited {
-            favoriteButton.alpha = 1
-            favoriteButton.setImage(UIImage(named: "CheckEdit"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "favoriteditemenabled-1"), for: .normal)
         } else {
-            favoriteButton.alpha = 0.5
             favoriteButton.setImage(UIImage(named: "favoriteditem-1"), for: .normal)
         }
     }

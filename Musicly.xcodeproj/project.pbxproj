@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
+||||||| 23e871c... Revert "Model created before initiating 'Create NSManagedObject Subclass'"
+		91115FFA1D97040E00712B14 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91115FF91D97040E00712B14 /* HudView.swift */; };
+=======
+		91115FFA1D97040E00712B14 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91115FF91D97040E00712B14 /* HudView.swift */; };
+		91115FFD1D9711F200712B14 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91115FFB1D9711F200712B14 /* Model.xcdatamodeld */; };
+>>>>>>> parent of 23e871c... Revert "Model created before initiating 'Create NSManagedObject Subclass'"
 		9116FE901D9527DD009A5BDA /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */; };
 		9116FE921D95317F009A5BDA /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116FE911D95317F009A5BDA /* GradientView.swift */; };
 		911A3D5A1D94616A0002C0C0 /* NoSearchResultsFound.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */; };
@@ -31,6 +38,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
+||||||| 23e871c... Revert "Model created before initiating 'Create NSManagedObject Subclass'"
+		91115FF91D97040E00712B14 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+=======
+		91115FF91D97040E00712B14 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		91115FFC1D9711F200712B14 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+>>>>>>> parent of 23e871c... Revert "Model created before initiating 'Create NSManagedObject Subclass'"
 		9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		9116FE911D95317F009A5BDA /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSearchResultsFound.xib; sourceTree = "<group>"; };
@@ -116,6 +130,7 @@
 				911AB6CD1D935604007981DE /* AudioTrackResults.swift */,
 				911AB6CF1D936AE7007981DE /* AudioTrackTableViewCell.swift */,
 				911A3D5D1D94656F0002C0C0 /* NoSearchResultsTableViewCell.swift */,
+				91115FFB1D9711F200712B14 /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -234,6 +249,7 @@
 				911AB6C61D933526007981DE /* SpotifyClient.swift in Sources */,
 				911AB6AE1D9321C7007981DE /* HomeViewController.swift in Sources */,
 				911AB6CA1D9339FD007981DE /* AudioTrack.swift in Sources */,
+				91115FFD1D9711F200712B14 /* Model.xcdatamodeld in Sources */,
 				911AB6D41D93853E007981DE /* UIImageView+DownloadImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +415,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		91115FFB1D9711F200712B14 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				91115FFC1D9711F200712B14 /* Model.xcdatamodel */,
+			);
+			currentVersion = 91115FFC1D9711F200712B14 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 911AB6A01D9321C7007981DE /* Project object */;
 }

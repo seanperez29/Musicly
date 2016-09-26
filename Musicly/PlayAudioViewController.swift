@@ -24,27 +24,13 @@ class PlayAudioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTrackDetails()
+        loadTrackDetailsAndPlay()
         view.backgroundColor = UIColor.clear
         let tap = UITapGestureRecognizer(target: self, action: #selector(PlayAudioViewController.closeButtonPressed(_:)))
         tap.cancelsTouchesInView = false
         tap.delegate = self
         view.addGestureRecognizer(tap)
         popupView.layer.cornerRadius = 10
-        
-        if let artistTrack = artistTrack {
-            if let url = URL(string: artistTrack.media) {
-                playerItem = AVPlayerItem(url: url)
-            }
-            player = AVPlayer(playerItem: playerItem)
-            player.play()
-        } else {
-            if let url = URL(string: audioTrack!.mediaURL) {
-                playerItem = AVPlayerItem(url: url)
-            }
-            player = AVPlayer(playerItem: playerItem)
-            player.play()
-        }
     }
     
     @IBAction func pauseButtonPressed(_ sender: AnyObject) {
@@ -58,19 +44,29 @@ class PlayAudioViewController: UIViewController {
     }
     
     
-    func loadTrackDetails() {
+    func loadTrackDetailsAndPlay() {
         if let artistTrack = artistTrack {
-            if let url = URL(string: artistTrack.album) {
-                downloadTask = albumImage.loadImageWithURL(url)
+            if let albumURL = URL(string: artistTrack.album) {
+                downloadTask = albumImage.loadImageWithURL(albumURL)
             }
+            if let mediaURL = URL(string: artistTrack.media) {
+                playerItem = AVPlayerItem(url: mediaURL)
+            }
+            player = AVPlayer(playerItem: playerItem)
             artistNameLabel.text = artistTrack.artist
             songNameLabel.text = artistTrack.song
+            player.play()
         } else {
-            if let url = URL(string: audioTrack!.albumURL) {
-                downloadTask = albumImage.loadImageWithURL(url)
+            if let albumURL = URL(string: audioTrack!.albumURL) {
+                downloadTask = albumImage.loadImageWithURL(albumURL)
             }
+            if let mediaURL = URL(string: audioTrack!.mediaURL) {
+                playerItem = AVPlayerItem(url: mediaURL)
+            }
+            player = AVPlayer(playerItem: playerItem)
             artistNameLabel.text = audioTrack!.artistName
             songNameLabel.text = audioTrack!.songName
+            player.play()
         }
     }
     

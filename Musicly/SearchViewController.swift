@@ -36,6 +36,15 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
                     print(errorString)
                     return
                 }
+                if let favorite = self.favorites.artistTrack {
+                    for artistTrack in favorite {
+                        for track in AudioTrackResults.sharedInstance.audioTracks {
+                            if track.id == (artistTrack as! ArtistTrack).trackID {
+                                track.hasFavorited = true
+                            }
+                        }
+                    }
+                }
                 performUIUpdatesOnMain {
                     self.tableView.reloadData()
                 }
@@ -57,7 +66,6 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
     }
     
     func favoritesViewController(viewController: FavoritesViewController, didDeleteTrack track: ArtistTrack) {
-        print("WE HAVE ENTERED DELEGATE")
         for artistTrack in AudioTrackResults.sharedInstance.audioTracks {
             if artistTrack.id == track.trackID {
                 artistTrack.hasFavorited = false

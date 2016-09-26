@@ -15,8 +15,11 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var pauseButton: UIButton!
     var audioTrack: AudioTrack!
     var downloadTask: URLSessionDownloadTask?
+    var playerItem: AVPlayerItem!
+    var player: AVPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,23 @@ class PlayAudioViewController: UIViewController {
         tap.delegate = self
         view.addGestureRecognizer(tap)
         popupView.layer.cornerRadius = 10
+        if let url = URL(string: audioTrack.mediaURL) {
+            playerItem = AVPlayerItem(url: url)
+        }
+        player = AVPlayer(playerItem: playerItem)
+        player.play()
     }
+    
+    @IBAction func pauseButtonPressed(_ sender: AnyObject) {
+        if player.rate == 0 {
+            player.play()
+            pauseButton.setImage(UIImage(named: "PauseBtn"), for: .normal)
+        } else {
+            player.pause()
+            pauseButton.setImage(UIImage(named: "PlayBtn"), for: .normal)
+        }
+    }
+    
     
     func loadTrackDetails() {
         if let url = URL(string: audioTrack.albumURL) {

@@ -16,7 +16,8 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var pauseButton: UIButton!
-    var audioTrack: AudioTrack!
+    var audioTrack: AudioTrack?
+    var artistTrack: ArtistTrack?
     var downloadTask: URLSessionDownloadTask?
     var playerItem: AVPlayerItem!
     var player: AVPlayer!
@@ -30,11 +31,20 @@ class PlayAudioViewController: UIViewController {
         tap.delegate = self
         view.addGestureRecognizer(tap)
         popupView.layer.cornerRadius = 10
-        if let url = URL(string: audioTrack.mediaURL) {
-            playerItem = AVPlayerItem(url: url)
+        
+        if let artistTrack = artistTrack {
+            if let url = URL(string: artistTrack.media) {
+                playerItem = AVPlayerItem(url: url)
+            }
+            player = AVPlayer(playerItem: playerItem)
+            player.play()
+        } else {
+            if let url = URL(string: audioTrack!.mediaURL) {
+                playerItem = AVPlayerItem(url: url)
+            }
+            player = AVPlayer(playerItem: playerItem)
+            player.play()
         }
-        player = AVPlayer(playerItem: playerItem)
-        player.play()
     }
     
     @IBAction func pauseButtonPressed(_ sender: AnyObject) {
@@ -49,11 +59,19 @@ class PlayAudioViewController: UIViewController {
     
     
     func loadTrackDetails() {
-        if let url = URL(string: audioTrack.albumURL) {
-           downloadTask = albumImage.loadImageWithURL(url)
+        if let artistTrack = artistTrack {
+            if let url = URL(string: artistTrack.album) {
+                downloadTask = albumImage.loadImageWithURL(url)
+            }
+            artistNameLabel.text = artistTrack.artist
+            songNameLabel.text = artistTrack.song
+        } else {
+            if let url = URL(string: audioTrack!.albumURL) {
+                downloadTask = albumImage.loadImageWithURL(url)
+            }
+            artistNameLabel.text = audioTrack!.artistName
+            songNameLabel.text = audioTrack!.songName
         }
-        artistNameLabel.text = audioTrack.artistName
-        songNameLabel.text = audioTrack.songName
     }
     
     required init?(coder aDecoder: NSCoder) {

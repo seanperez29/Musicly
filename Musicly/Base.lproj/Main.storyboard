@@ -86,10 +86,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="o4M-td-jYj"/>
+                    <connections>
+                        <segue destination="LYD-Np-51u" kind="presentation" identifier="PlayFavorite" id="lla-C2-xdF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG8-MH-8bv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2767.1999999999998" y="-331.48425787106447"/>
+            <point key="canvasLocation" x="2649" y="240"/>
         </scene>
         <!--Search-->
         <scene sceneID="wg7-f3-ORb">
@@ -245,8 +248,8 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBm-3N-ABP">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="QwC-Kv-czh"/>
-                                            <constraint firstAttribute="width" constant="64" id="mjw-jP-V7e"/>
+                                            <constraint firstAttribute="height" constant="55" id="QwC-Kv-czh"/>
+                                            <constraint firstAttribute="width" constant="55" id="mjw-jP-V7e"/>
                                         </constraints>
                                         <state key="normal" image="PauseBtn1"/>
                                         <connections>
@@ -258,7 +261,6 @@
                                 <constraints>
                                     <constraint firstItem="zDc-ca-iMf" firstAttribute="centerX" secondItem="uwe-xf-WOG" secondAttribute="centerX" id="4Dn-U9-W5W"/>
                                     <constraint firstItem="DTk-Hr-7sE" firstAttribute="top" secondItem="zDc-ca-iMf" secondAttribute="bottom" constant="4" id="4xL-PE-azs"/>
-                                    <constraint firstItem="G4T-6j-WYq" firstAttribute="top" secondItem="DTk-Hr-7sE" secondAttribute="bottom" constant="2" id="71T-Ru-LCu"/>
                                     <constraint firstItem="Wi7-Xy-DY5" firstAttribute="top" secondItem="uwe-xf-WOG" secondAttribute="top" constant="3" id="AbY-1a-LNy"/>
                                     <constraint firstAttribute="trailing" secondItem="G4T-6j-WYq" secondAttribute="trailing" constant="8" id="DeW-iN-1RA"/>
                                     <constraint firstItem="FBm-3N-ABP" firstAttribute="centerX" secondItem="uwe-xf-WOG" secondAttribute="centerX" id="Hoa-qT-11g"/>
@@ -266,11 +268,11 @@
                                     <constraint firstAttribute="trailing" secondItem="DTk-Hr-7sE" secondAttribute="trailing" constant="8" id="Rt4-ut-Dph"/>
                                     <constraint firstAttribute="bottom" secondItem="FBm-3N-ABP" secondAttribute="bottom" constant="6" id="ZQP-I3-I1r"/>
                                     <constraint firstItem="DTk-Hr-7sE" firstAttribute="leading" secondItem="uwe-xf-WOG" secondAttribute="leading" constant="8" id="f0u-0e-WBB"/>
-                                    <constraint firstItem="FBm-3N-ABP" firstAttribute="top" secondItem="G4T-6j-WYq" secondAttribute="bottom" constant="6" id="h5j-kG-4qE"/>
                                     <constraint firstItem="zDc-ca-iMf" firstAttribute="top" secondItem="uwe-xf-WOG" secondAttribute="top" constant="8" id="jr5-VF-XDU"/>
                                     <constraint firstAttribute="height" constant="260" id="mQ2-FI-7CN"/>
                                     <constraint firstAttribute="trailing" secondItem="Wi7-Xy-DY5" secondAttribute="trailing" constant="3" id="qSn-Id-L69"/>
                                     <constraint firstAttribute="width" constant="260" id="rMO-2n-BBM"/>
+                                    <constraint firstItem="G4T-6j-WYq" firstAttribute="top" secondItem="DTk-Hr-7sE" secondAttribute="bottom" constant="4" id="t8N-Iq-qez"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -346,5 +348,8 @@
         <image name="menubtn" width="20" height="14"/>
         <image name="searchbtn" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="lla-C2-xdF"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

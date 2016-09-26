@@ -41,6 +41,15 @@ class FavoritesViewController: UITableViewController {
             fatalError("Could not perform fetch")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PlayFavorite" {
+            let playAudioViewController = segue.destination as! PlayAudioViewController
+            let indexPath = sender as! IndexPath
+            let artistTrack = fetchedResultsController.object(at: indexPath) 
+            playAudioViewController.artistTrack = artistTrack
+        }
+    }
 
 }
 
@@ -63,6 +72,10 @@ extension FavoritesViewController {
             CoreDataStack.sharedInstance().context.delete(artistTrack)
             CoreDataStack.sharedInstance().save()
         }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "PlayFavorite", sender: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

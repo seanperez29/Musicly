@@ -248,7 +248,7 @@
                                             <constraint firstAttribute="height" constant="64" id="QwC-Kv-czh"/>
                                             <constraint firstAttribute="width" constant="64" id="mjw-jP-V7e"/>
                                         </constraints>
-                                        <state key="normal" image="PauseBtn"/>
+                                        <state key="normal" image="PauseBtn1"/>
                                         <connections>
                                             <action selector="pauseButtonPressed:" destination="LYD-Np-51u" eventType="touchUpInside" id="CBT-Yy-sGO"/>
                                         </connections>
@@ -340,7 +340,7 @@
     </scenes>
     <resources>
         <image name="Multiply-50" width="50" height="50"/>
-        <image name="PauseBtn" width="70" height="70"/>
+        <image name="PauseBtn1" width="64" height="64"/>
         <image name="favoriteditem-1" width="30" height="30"/>
         <image name="heart_selected_icon" width="20" height="19"/>
         <image name="menubtn" width="20" height="14"/>

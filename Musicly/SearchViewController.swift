@@ -14,9 +14,19 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchView: UIView!
-    
     var hasSearched = false
     var favorites: Favorited!
+    var recentlyPlayed: RecentlyPlayed!
+    lazy var recentlyPlayedFetchedResultsController: NSFetchedResultsController<ArtistTrack> = {
+        let fetchRequest = NSFetchRequest<ArtistTrack>()
+        let entity = ArtistTrack.entity()
+        fetchRequest.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = NSPredicate(format: "recentlyPlayed == %@", self.recentlyPlayed)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +37,14 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+    }
+    
+    func performRecentlyPlayedFetch() {
+        do {
+            try recentlyPlayedFetchedResultsController.performFetch()
+        } catch {
+            fatalError("Could not perform fetch")
+        }
     }
         
     func performSearch() {
@@ -63,6 +81,10 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
             let playAudioViewController = segue.destination as! PlayAudioViewController
             let indexPath = sender as! NSIndexPath
             let audioTrack = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
+            let artistTrack = ArtistTrack(audioTrack: audioTrack, context: CoreDataStack.sharedInstance().context)
+            recentlyPlayed.addToArtistTrack(artistTrack)
+            CoreDataStack.sharedInstance().save()
+            print("THIS IS RECENTLY PLAYED: \(recentlyPlayed)")
             playAudioViewController.audioTrack = audioTrack
         }
     }
@@ -136,6 +158,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performRecentlyPlayedFetch()
+        let audioTracks = recentlyPlayedFetchedResultsController.fetchedObjects!
+        if audioTracks.count > 9 {
+            let deleteTrack = audioTracks[0]
+            CoreDataStack.sharedInstance().context.delete(deleteTrack)
+        }
+        CoreDataStack.sharedInstance().save()
         performSegue(withIdentifier: "PlayAudio", sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }

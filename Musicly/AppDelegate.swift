@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var favorites: Favorited!
+    var recentlyPlayed: RecentlyPlayed!
     
     func isFirstLaunch() -> Bool {
         if let notFirstLaunch = UserDefaults.standard.value(forKey: "isFirstLaunch") {
@@ -33,7 +34,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let foundObject = foundObjects[0]
             return foundObject
         } catch {
-            fatalError("Could not fetch pins")
+            fatalError("Could not fetch favorited")
+        }
+    }
+    
+    func fetchRecentlyPlayed() -> RecentlyPlayed {
+        let fetchRequest: NSFetchRequest<RecentlyPlayed> = RecentlyPlayed.fetchRequest()
+        let entity = NSEntityDescription.entity(forEntityName: "RecentlyPlayed", in: CoreDataStack.sharedInstance().context)
+        fetchRequest.entity = entity
+        do {
+            let foundObjects = try CoreDataStack.sharedInstance().context.fetch(fetchRequest)
+            let foundObject = foundObjects[0]
+            return foundObject
+        } catch {
+            fatalError("Could not fetch recently played")
         }
     }
     
@@ -46,19 +60,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setNavigationBarColor()
         if isFirstLaunch() {
             let favorites = Favorited(context: CoreDataStack.sharedInstance().context)
+            let recentlyPlayed = RecentlyPlayed(context: CoreDataStack.sharedInstance().context)
             self.favorites = favorites
+            self.recentlyPlayed = recentlyPlayed
             CoreDataStack.sharedInstance().save()
         } else {
             favorites = fetchFavorites()
+            recentlyPlayed = fetchRecentlyPlayed()
         }
         let tabBarController = window!.rootViewController as! UITabBarController
         if let tabBarControllers = tabBarController.viewControllers {
-            let homeViewController = tabBarControllers[0] as! HomeViewController
+            let homeNavigationController = tabBarControllers[0] as! UINavigationController
+            let homeViewController = homeNavigationController.viewControllers[0] as! HomeViewController
             homeViewController.favorites = favorites
+            homeViewController.recentlyPlayed = recentlyPlayed
             let searchViewController = tabBarControllers[1] as! SearchViewController
             searchViewController.favorites = favorites
-            let navigationController = tabBarControllers[2] as! UINavigationController
-            let favoritesViewController = navigationController.viewControllers[0] as! FavoritesViewController
+            searchViewController.recentlyPlayed = recentlyPlayed
+            let favoritesNavigationController = tabBarControllers[2] as! UINavigationController
+            let favoritesViewController = favoritesNavigationController.viewControllers[0] as! FavoritesViewController
             favoritesViewController.favorites = favorites
             favoritesViewController.delegate = searchViewController
         }

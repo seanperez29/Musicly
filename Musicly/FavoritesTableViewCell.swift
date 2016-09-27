@@ -26,5 +26,8 @@ class FavoritesTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         downloadTask?.cancel()
         downloadTask = nil
+        artistNameLabel.text = nil
+        songNameLabel.text = nil
+        albumImage.image = nil
     }
 }

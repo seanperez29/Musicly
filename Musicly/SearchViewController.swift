@@ -13,6 +13,8 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchView: UIView!
+    
     var hasSearched = false
     var favorites: Favorited!
     
@@ -105,6 +107,7 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchView.isHidden = true
         hasSearched = true
         performSearch()
     }

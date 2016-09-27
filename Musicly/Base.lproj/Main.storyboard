@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bNI-IP-6O6" id="GPv-me-TPy">
-                                    <frame key="frameInset" width="375" height="79.5"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1ju-EI-GH9">
@@ -106,7 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search artist, album, or song" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-xC-eJp">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-xC-eJp">
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="Jdz-jU-MW3"/>
@@ -120,7 +120,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7gS-G4-dD4" id="AuL-Jd-WF8">
-                                            <frame key="frameInset" width="375" height="79.5"/>
+                                            <frame key="frameInset" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-Ps-jpO">
@@ -183,12 +183,44 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="RSC-9n-VqR"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gg0-QX-BUI">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8ja-ge-iLn">
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Magnify" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-d3-sAa">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="84" id="PHW-CV-qqH"/>
+                                                    <constraint firstAttribute="height" constant="84" id="TSF-f3-279"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search your favorite artist, song, or album" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNY-R8-Y1L">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="SLT-Or-vr3"/>
+                                                    <constraint firstAttribute="width" constant="201" id="aer-zA-YdB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <color key="textColor" red="0.81376527317889447" green="0.81376527317889447" blue="0.81376527317889447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8ja-ge-iLn" firstAttribute="centerX" secondItem="Gg0-QX-BUI" secondAttribute="centerX" id="qmU-1K-f5g"/>
+                                    <constraint firstItem="8ja-ge-iLn" firstAttribute="top" secondItem="Gg0-QX-BUI" secondAttribute="top" constant="140" id="t7E-UR-N0y"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Gg0-QX-BUI" secondAttribute="bottom" id="3qK-CF-AQZ"/>
                             <constraint firstAttribute="trailing" secondItem="bTB-LN-jHP" secondAttribute="trailing" id="9NN-Sq-MLQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Gg0-QX-BUI" secondAttribute="trailing" id="AER-Ev-LBK"/>
                             <constraint firstAttribute="trailing" secondItem="LDt-xC-eJp" secondAttribute="trailing" id="Kdi-DP-H8e"/>
                             <constraint firstItem="bTB-LN-jHP" firstAttribute="top" secondItem="LDt-xC-eJp" secondAttribute="bottom" id="Rbw-Wg-lWm"/>
+                            <constraint firstItem="Gg0-QX-BUI" firstAttribute="top" secondItem="LDt-xC-eJp" secondAttribute="bottom" id="Ub2-ZU-Jb0"/>
+                            <constraint firstItem="Gg0-QX-BUI" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="UsI-bU-iiJ"/>
                             <constraint firstItem="LDt-xC-eJp" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="apE-8V-byt"/>
                             <constraint firstItem="bTB-LN-jHP" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="mGw-qM-hcH"/>
                             <constraint firstItem="LDt-xC-eJp" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="nQv-yW-BYi"/>
@@ -198,6 +230,7 @@
                     <tabBarItem key="tabBarItem" title="Search" image="searchbtn" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="searchBar" destination="LDt-xC-eJp" id="2Ux-jh-h2l"/>
+                        <outlet property="searchView" destination="Gg0-QX-BUI" id="iQb-oi-6Il"/>
                         <outlet property="tableView" destination="bTB-LN-jHP" id="XBB-a3-MhF"/>
                         <segue destination="LYD-Np-51u" kind="presentation" identifier="PlayAudio" id="RtI-3b-zGA"/>
                     </connections>
@@ -341,6 +374,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Magnify" width="84" height="84"/>
         <image name="Multiply-50" width="50" height="50"/>
         <image name="PauseBtn1" width="64" height="64"/>
         <image name="favoriteditem-1" width="30" height="30"/>
@@ -349,7 +383,7 @@
         <image name="searchbtn" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lla-C2-xdF"/>
+        <segue reference="RtI-3b-zGA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

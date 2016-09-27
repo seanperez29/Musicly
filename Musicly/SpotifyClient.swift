@@ -39,4 +39,19 @@ class SpotifyClient: NSObject {
         return components.url!
     }
     
+    func getImage(_ imageUrl: String, completionHandler: @escaping (_ imageData: Data?, _ errorString: String?) -> Void) -> URLSessionDataTask {
+        let url = URL(string: imageUrl)
+        let request = URLRequest(url: url!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: {data, response, error in
+            if let error = error {
+                completionHandler(nil, error.localizedDescription)
+            } else {
+                completionHandler(data, nil)
+            }
+        })
+        task.resume()
+        return task
+    }
+    
 }

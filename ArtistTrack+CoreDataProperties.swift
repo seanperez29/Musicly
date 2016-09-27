@@ -18,6 +18,7 @@ extension ArtistTrack {
     @NSManaged public var album: String
     @NSManaged public var artist: String
     @NSManaged public var creationDate: NSDate
+    @NSManaged public var imageData: Data?
     @NSManaged public var isFavorite: Bool
     @NSManaged public var media: String
     @NSManaged public var song: String

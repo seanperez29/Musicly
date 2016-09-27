@@ -4,6 +4,7 @@
         <attribute name="album" attributeType="String" syncable="YES"/>
         <attribute name="artist" attributeType="String" syncable="YES"/>
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="media" attributeType="String" syncable="YES"/>
         <attribute name="song" attributeType="String" syncable="YES"/>
@@ -18,7 +19,7 @@
         <relationship name="artistTrack" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArtistTrack" inverseName="recentlyPlayed" inverseEntity="ArtistTrack" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ArtistTrack" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="ArtistTrack" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="Favorited" positionX="-54" positionY="45" width="128" height="60"/>
         <element name="RecentlyPlayed" positionX="-54" positionY="54" width="128" height="60"/>
     </elements>

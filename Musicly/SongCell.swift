@@ -14,23 +14,39 @@ class SongCell: UICollectionViewCell {
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
-    var downloadTask: URLSessionDownloadTask?
+    var dataTask: URLSessionDataTask?
     
     var artistTrack: ArtistTrack? = nil {
         didSet {
             if let artistTrack = artistTrack {
                 self.artistNameLabel.text = artistTrack.artist
                 self.songNameLabel.text = artistTrack.song
-                if let url = URL(string: artistTrack.album) {
-                    downloadTask = albumImage.loadImageWithURL(url)
+                if artistTrack.imageData != nil {
+                    let image = UIImage(data: artistTrack.imageData!)
+                    albumImage.image = image
+                } else {
+                    dataTask = SpotifyClient.sharedInstance.getImage(artistTrack.album, completionHandler: { (imageData, errorString) in
+                        guard (errorString == nil) else {
+                            print("Error downloading image: \(errorString)")
+                            return
+                        }
+                        if let image = UIImage(data: imageData!) {
+                            performUIUpdatesOnMain {
+                                self.albumImage.image = image
+                                if let imageData = UIImagePNGRepresentation(image) {
+                                    artistTrack.imageData = imageData
+                                }
+                            }
+                        }
+                    })
                 }
             }
         }
     }
     
     override func prepareForReuse() {
-        downloadTask?.cancel()
-        downloadTask = nil
+        dataTask?.cancel()
+        dataTask = nil
         artistNameLabel.text = nil
         songNameLabel.text = nil
         albumImage.image = nil

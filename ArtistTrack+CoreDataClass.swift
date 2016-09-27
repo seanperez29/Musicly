@@ -25,5 +25,6 @@ public class ArtistTrack: NSManagedObject {
         self.isFavorite = audioTrack.hasFavorited
         self.trackID = audioTrack.id
         self.creationDate = Date() as NSDate
+        self.imageData = nil
     }
 }

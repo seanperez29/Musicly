@@ -17,28 +17,30 @@ class SongCell: UICollectionViewCell {
     var dataTask: URLSessionDataTask?
     var artistTrack: ArtistTrack? = nil {
         didSet {
-            if let artistTrack = artistTrack {
-                self.artistNameLabel.text = artistTrack.artist
-                self.songNameLabel.text = artistTrack.song
-                if artistTrack.imageData != nil {
-                    let image = UIImage(data: artistTrack.imageData!)
-                    albumImage.image = image
-                } else {
-                    dataTask = SpotifyClient.sharedInstance.getImage(artistTrack.album, completionHandler: { (imageData, errorString) in
-                        guard (errorString == nil) else {
-                            print("Error downloading image: \(errorString)")
-                            return
-                        }
-                        if let image = UIImage(data: imageData!) {
-                            performUIUpdatesOnMain {
-                                self.albumImage.image = image
-                                if let imageData = UIImagePNGRepresentation(image) {
-                                    artistTrack.imageData = imageData
-                                }
+            guard let artistTrack = artistTrack else {
+                print("Unable to obtian artist track")
+                return
+            }
+            artistNameLabel.text = artistTrack.artist
+            songNameLabel.text = artistTrack.song
+            if artistTrack.imageData != nil {
+                let image = UIImage(data: artistTrack.imageData!)
+                albumImage.image = image
+            } else {
+                dataTask = SpotifyClient.sharedInstance.getImage(artistTrack.album, completionHandler: { (imageData, errorString) in
+                    guard (errorString == nil) else {
+                        print("Error downloading image: \(errorString)")
+                        return
+                    }
+                    if let image = UIImage(data: imageData!) {
+                        performUIUpdatesOnMain {
+                            self.albumImage.image = image
+                            if let imageData = UIImagePNGRepresentation(image) {
+                                artistTrack.imageData = imageData
                             }
                         }
-                    })
-                }
+                    }
+                })
             }
         }
     }

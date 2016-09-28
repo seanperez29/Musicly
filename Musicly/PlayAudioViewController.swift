@@ -16,9 +16,9 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var pauseButton: UIButton!
-    var audioTrack: AudioTrack?
-    var artistTrack: ArtistTrack?
-    var downloadTask: URLSessionDownloadTask?
+    var audioTrack: AudioTrack!
+    var artistTrack: ArtistTrack!
+    var dataTask: URLSessionDataTask?
     var playerItem: AVPlayerItem!
     var player: AVPlayer!
     
@@ -43,12 +43,10 @@ class PlayAudioViewController: UIViewController {
         }
     }
     
-    
     func loadTrackDetailsAndPlay() {
         if let artistTrack = artistTrack {
-            if let albumURL = URL(string: artistTrack.album) {
-                downloadTask = albumImage.loadImageWithURL(albumURL)
-            }
+            let image = UIImage(data: artistTrack.imageData!)
+            albumImage.image = image
             if let mediaURL = URL(string: artistTrack.media) {
                 playerItem = AVPlayerItem(url: mediaURL)
             }
@@ -57,9 +55,17 @@ class PlayAudioViewController: UIViewController {
             songNameLabel.text = artistTrack.song
             player.play()
         } else {
-            if let albumURL = URL(string: audioTrack!.albumURL) {
-                downloadTask = albumImage.loadImageWithURL(albumURL)
-            }
+            dataTask = SpotifyClient.sharedInstance.getImage(audioTrack.albumURL, completionHandler: { (imageData, errorString) in
+                guard (errorString == nil) else {
+                    print("Unable to download image: \(errorString)")
+                    return
+                }
+                if let image = UIImage(data: imageData!) {
+                    performUIUpdatesOnMain {
+                        self.albumImage.image = image
+                    }
+                }
+            })
             if let mediaURL = URL(string: audioTrack!.mediaURL) {
                 playerItem = AVPlayerItem(url: mediaURL)
             }
@@ -81,7 +87,7 @@ class PlayAudioViewController: UIViewController {
     }
     
     deinit {
-        downloadTask?.cancel()
+        dataTask?.cancel()
     }
 
 }

@@ -28,7 +28,6 @@
 		911AB6CE1D935604007981DE /* AudioTrackResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CD1D935604007981DE /* AudioTrackResults.swift */; };
 		911AB6D01D936AE7007981DE /* AudioTrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6CF1D936AE7007981DE /* AudioTrackTableViewCell.swift */; };
 		911AB6D21D9370D2007981DE /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6D11D9370D2007981DE /* GCDBlackBox.swift */; };
-		911AB6D41D93853E007981DE /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */; };
 		912A81181D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81121D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift */; };
 		912A81191D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81131D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift */; };
 		912A811A1D97A3CD0066AB27 /* Favorited+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A81141D97A3CD0066AB27 /* Favorited+CoreDataClass.swift */; };
@@ -68,7 +67,6 @@
 		911AB6CD1D935604007981DE /* AudioTrackResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrackResults.swift; sourceTree = "<group>"; };
 		911AB6CF1D936AE7007981DE /* AudioTrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrackTableViewCell.swift; sourceTree = "<group>"; };
 		911AB6D11D9370D2007981DE /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
-		911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		912A81121D97A3CD0066AB27 /* RecentlyPlayed+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RecentlyPlayed+CoreDataClass.swift"; path = "../RecentlyPlayed+CoreDataClass.swift"; sourceTree = "<group>"; };
 		912A81131D97A3CD0066AB27 /* RecentlyPlayed+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RecentlyPlayed+CoreDataProperties.swift"; path = "../RecentlyPlayed+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		912A81141D97A3CD0066AB27 /* Favorited+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Favorited+CoreDataClass.swift"; path = "../Favorited+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			children = (
 				911AB6B11D9321C7007981DE /* Main.storyboard */,
 				911AB6B61D9321C7007981DE /* LaunchScreen.storyboard */,
-				911AB6D31D93853E007981DE /* UIImageView+DownloadImage.swift */,
 				911A3D591D94616A0002C0C0 /* NoSearchResultsFound.xib */,
 				9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */,
 				9116FE911D95317F009A5BDA /* GradientView.swift */,
@@ -298,7 +295,6 @@
 				91441C5E1D9A252F00399D2F /* Category.swift in Sources */,
 				911AB6CA1D9339FD007981DE /* AudioTrack.swift in Sources */,
 				91115FFD1D9711F200712B14 /* Model.xcdatamodeld in Sources */,
-				911AB6D41D93853E007981DE /* UIImageView+DownloadImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

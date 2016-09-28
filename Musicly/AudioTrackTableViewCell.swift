@@ -18,15 +18,23 @@ class AudioTrackTableViewCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
-    var downloadTask: URLSessionDownloadTask?
+    var dataTask: URLSessionDataTask?
     weak var delegate: AudioTrackTableViewCellDelegate?
     
     func configureCell(_ searchResult: AudioTrack) {
         artistNameLabel.text = searchResult.artistName
         songNameLabel.text = searchResult.songName
-        if let url = URL(string: searchResult.albumURL) {
-            downloadTask = albumImage.loadImageWithURL(url)
-        }
+        dataTask = SpotifyClient.sharedInstance.getImage(searchResult.albumURL, completionHandler: { (imageData, errorString) in
+            guard (errorString == nil) else {
+                print("Unable to download image: \(errorString)")
+                return
+            }
+            if let image = UIImage(data: imageData!) {
+                performUIUpdatesOnMain {
+                    self.albumImage.image = image
+                }
+            }
+        })
         configureCheckmarkForCell(track: searchResult)
     }
     
@@ -45,8 +53,8 @@ class AudioTrackTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        downloadTask?.cancel()
-        downloadTask = nil
+        dataTask?.cancel()
+        dataTask = nil
         artistNameLabel.text = nil
         songNameLabel.text = nil
         albumImage.image = nil

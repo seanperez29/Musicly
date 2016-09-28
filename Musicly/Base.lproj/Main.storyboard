@@ -165,7 +165,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="1ju-EI-GH9" firstAttribute="leading" secondItem="GPv-me-TPy" secondAttribute="leading" constant="8" id="5o1-oC-ib2"/>
-                                        <constraint firstAttribute="bottom" secondItem="1ju-EI-GH9" secondAttribute="bottom" constant="7.5" id="6Xr-zO-g88"/>
+                                        <constraint firstAttribute="bottom" secondItem="1ju-EI-GH9" secondAttribute="bottom" constant="8" id="6Xr-zO-g88"/>
                                         <constraint firstItem="9qM-uB-LPA" firstAttribute="leading" secondItem="1ju-EI-GH9" secondAttribute="trailing" constant="8" id="7YG-Y8-gjQ"/>
                                         <constraint firstItem="zCx-cm-7Xt" firstAttribute="leading" secondItem="1ju-EI-GH9" secondAttribute="trailing" constant="8" id="9wh-Po-wya"/>
                                         <constraint firstItem="1ju-EI-GH9" firstAttribute="top" secondItem="GPv-me-TPy" secondAttribute="top" constant="8" id="JtU-8K-gTw"/>
@@ -505,7 +505,7 @@
         <image name="searchbtn" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CiW-jD-ca9"/>
+        <segue reference="lla-C2-xdF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

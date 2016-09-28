@@ -45,10 +45,6 @@ class HomeViewController: UIViewController {
         tableView.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     func performFavoritedFetch() {
         do {
             try favoritedFetchedResultsController.performFetch()

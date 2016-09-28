@@ -56,12 +56,14 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
                     print(errorString)
                     return
                 }
-                if let favorite = self.favorites.artistTrack {
-                    for artistTrack in favorite {
-                        for track in AudioTrackResults.sharedInstance.audioTracks {
-                            if track.id == (artistTrack as! ArtistTrack).trackID {
-                                track.hasFavorited = true
-                            }
+                guard let favorite = self.favorites.artistTrack else {
+                    print("Unable to obtain favorites array")
+                    return
+                }
+                for artistTrack in favorite {
+                    for track in AudioTrackResults.sharedInstance.audioTracks {
+                        if track.id == (artistTrack as! ArtistTrack).trackID {
+                            track.hasFavorited = true
                         }
                     }
                 }
@@ -84,7 +86,6 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
             let artistTrack = ArtistTrack(audioTrack: audioTrack, context: CoreDataStack.sharedInstance().context)
             recentlyPlayed.addToArtistTrack(artistTrack)
             CoreDataStack.sharedInstance().save()
-            print("THIS IS RECENTLY PLAYED: \(recentlyPlayed)")
             playAudioViewController.audioTrack = audioTrack
         }
     }
@@ -109,14 +110,15 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
                 CoreDataStack.sharedInstance().save()
                 hudView.text = "Favorited"
                 hudView.image = "check_icon"
-                print(favorites)
             } else {
-                if let favorite = favorites.artistTrack {
-                    for artistTrack in favorite {
-                        if (artistTrack as! ArtistTrack).trackID == track.id {
-                            CoreDataStack.sharedInstance().context.delete(artistTrack as! NSManagedObject)
-                            CoreDataStack.sharedInstance().save()
-                        }
+                guard let favorite = favorites.artistTrack else {
+                    print("Unable to obtain favorites array")
+                    return
+                }
+                for artistTrack in favorite {
+                    if (artistTrack as! ArtistTrack).trackID == track.id {
+                        CoreDataStack.sharedInstance().context.delete(artistTrack as! NSManagedObject)
+                        CoreDataStack.sharedInstance().save()
                     }
                 }
                 hudView.text = "Removed"

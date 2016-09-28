@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class CategoriesCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
+    var playerItem: AVPlayerItem!
+    var player: AVPlayer!
     var categories: Category? = nil {
         didSet {
             collectionView.reloadData()
@@ -28,8 +31,5 @@ extension CategoriesCell: UICollectionViewDataSource, UICollectionViewDelegate {
             cell.artistTrack = categories.songs[indexPath.row]
         }
         return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
 }

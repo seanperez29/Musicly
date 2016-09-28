@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class HomeViewController: UIViewController {
     
@@ -60,6 +61,13 @@ class HomeViewController: UIViewController {
             try recentlyPlayedFetchedResultsController.performFetch()
         } catch {
             fatalError("Could not perform fetch")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let songCell = sender as? SongCell, let playAudioViewController = segue.destination as? PlayAudioViewController {
+            let artistTrack = songCell.artistTrack
+            playAudioViewController.artistTrack = artistTrack
         }
     }
 }

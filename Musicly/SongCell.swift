@@ -15,7 +15,6 @@ class SongCell: UICollectionViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
     var dataTask: URLSessionDataTask?
-    
     var artistTrack: ArtistTrack? = nil {
         didSet {
             if let artistTrack = artistTrack {

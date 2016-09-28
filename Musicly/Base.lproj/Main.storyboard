@@ -84,6 +84,7 @@
                                                                 <outlet property="albumImage" destination="bW2-dk-I2t" id="QoH-Yh-Dbo"/>
                                                                 <outlet property="artistNameLabel" destination="W0b-Q6-aL9" id="ewD-1L-5PZ"/>
                                                                 <outlet property="songNameLabel" destination="705-kJ-iwc" id="kBv-bf-FVC"/>
+                                                                <segue destination="LYD-Np-51u" kind="presentation" identifier="PlayFromSongCell" id="CiW-jD-ca9"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -219,10 +220,10 @@
                                 <color key="separatorColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="80" id="7gS-G4-dD4" customClass="AudioTrackTableViewCell" customModule="Musicly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7gS-G4-dD4" id="AuL-Jd-WF8">
-                                            <frame key="frameInset" width="375" height="79"/>
+                                            <frame key="frameInset" width="1000" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-Ps-jpO">
@@ -504,7 +505,7 @@
         <image name="searchbtn" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lla-C2-xdF"/>
+        <segue reference="CiW-jD-ca9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

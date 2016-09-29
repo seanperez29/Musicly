@@ -19,11 +19,11 @@ class AudioTrack {
     var hasFavorited = false
     
     init(dictionary: [String:AnyObject]) {
-        artistName = dictionary["artistName"] as! String
-        songName = dictionary["songName"] as! String
-        mediaURL = dictionary["mediaURL"] as! String
-        albumURL = dictionary["albumURL"] as! String
-        id = dictionary["id"] as! String
+        artistName = dictionary[Constants.AudioTrack.ArtistName] as! String
+        songName = dictionary[Constants.AudioTrack.SongName] as! String
+        mediaURL = dictionary[Constants.AudioTrack.MediaURL] as! String
+        albumURL = dictionary[Constants.AudioTrack.AlbumURL] as! String
+        id = dictionary[Constants.AudioTrack.ID] as! String
     }
     
     func toggleFavorited() {

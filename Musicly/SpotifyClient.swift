@@ -12,7 +12,7 @@ class SpotifyClient: NSObject {
     static var sharedInstance = SpotifyClient()
     
     func loadTracks(_ artist: String, completionHandler: @escaping (_ results: AnyObject?, _ errorString: String?) -> Void) {
-        let methodParameters = ["q": artist, "type": "track", "limit": "50"]
+        let methodParameters = [Constants.SpotifyParameterKeys.Q: artist, Constants.SpotifyParameterKeys.SearchType: Constants.SpotifyParameterValues.SearchTracks, Constants.SpotifyParameterKeys.Limit: Constants.SpotifyParameterValues.SearchLimit]
         
         taskForGetMethod(methodParameters as [String : AnyObject]) { (result, errorString) in
             guard (errorString == nil) else {
@@ -27,9 +27,9 @@ class SpotifyClient: NSObject {
     
     func spotifyURLFromParameters(_ parameters: [String:AnyObject]) -> URL {
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.spotify.com"
-        components.path = "/v1/search"
+        components.scheme = Constants.SpotifyURL.Scheme
+        components.host = Constants.SpotifyURL.Host
+        components.path = Constants.SpotifyURL.Path
         components.queryItems = [URLQueryItem]()
         
         for (key, value) in parameters {

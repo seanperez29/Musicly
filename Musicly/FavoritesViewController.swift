@@ -43,7 +43,7 @@ class FavoritesViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PlayFavorite" {
+        if segue.identifier == Constants.Segues.PlayFavorite {
             let playAudioViewController = segue.destination as! PlayAudioViewController
             let indexPath = sender as! IndexPath
             let artistTrack = fetchedResultsController.object(at: indexPath) 
@@ -59,7 +59,7 @@ extension FavoritesViewController {
         return sectionInfo.numberOfObjects
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath) as! FavoritesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.FavoritesCell, for: indexPath) as! FavoritesTableViewCell
         let artistTrack = fetchedResultsController.object(at: indexPath)
         cell.configureCell(artistTrack)
         return cell
@@ -74,7 +74,7 @@ extension FavoritesViewController {
         }
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "PlayFavorite", sender: indexPath)
+        performSegue(withIdentifier: Constants.Segues.PlayFavorite, sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

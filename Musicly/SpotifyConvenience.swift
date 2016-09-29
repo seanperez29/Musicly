@@ -17,12 +17,16 @@ extension SpotifyClient {
             func displayError(_ error: String) {
                 print(error)
             }
+            guard let internetError = (response as? HTTPURLResponse)?.statusCode, internetError != -1009 else {
+                completionHandler(nil, "The internet access appears to be offline.")
+                return
+            }
             guard (error == nil) else {
                 displayError("There was an error with your request: \(error)")
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                displayError("Your request returned a status code other thatn 2xx!")
+                displayError("Your request returned a status code other than 2xx!")
                 return
             }
             guard let data = data else {
@@ -38,12 +42,12 @@ extension SpotifyClient {
                 return
             }
             
-            guard let tracks = parsedResult["tracks"] as? [String:AnyObject] else {
-                displayError("Cannot find key 'tracks' in \(parsedResult)")
+            guard let tracks = parsedResult[Constants.SpotifyJSONKeys.Tracks] as? [String:AnyObject] else {
+                displayError("Cannot find key '\(Constants.SpotifyJSONKeys.Tracks)' in \(parsedResult)")
                 return
             }
-            guard let items = tracks["items"] else {
-                displayError("Cannot find key 'items' in \(tracks)")
+            guard let items = tracks[Constants.SpotifyJSONKeys.Items] else {
+                displayError("Cannot find key '\(Constants.SpotifyJSONKeys.Items)' in \(tracks)")
                 return
             }
             self.getTracksFromResults(items)
@@ -56,32 +60,32 @@ extension SpotifyClient {
         for i in 0..<items.count {
             var dict = [String:AnyObject]()
             let item = items[i] as! [String:AnyObject]
-            let songName = item["name"]
-            let previewURL = item["preview_url"]
-            let id = item["id"]
-            dict["songName"] = songName
-            dict["mediaURL"] = previewURL
-            dict["id"] = id
+            let songName = item[Constants.SpotifyJSONKeys.Name]
+            let previewURL = item[Constants.SpotifyJSONKeys.PreviewURL]
+            let id = item[Constants.SpotifyJSONKeys.ID]
+            dict[Constants.AudioTrack.SongName] = songName
+            dict[Constants.AudioTrack.MediaURL] = previewURL
+            dict[Constants.AudioTrack.ID] = id
    
-            guard let artists = item["artists"] else {
-                print("Cannot find key 'artists' in \(item)")
+            guard let artists = item[Constants.SpotifyJSONKeys.Artists] else {
+                print("Cannot find key '\(Constants.SpotifyJSONKeys.Artists)' in \(item)")
                 return
             }
             let artistArray = artists[0] as! [String:AnyObject]
-            let artist = artistArray["name"]
-            dict["artistName"] = artist
+            let artist = artistArray[Constants.SpotifyJSONKeys.Name]
+            dict[Constants.AudioTrack.ArtistName] = artist
 
-            guard let albumArray = item["album"] as? [String:AnyObject] else {
-                print("Cannot find key 'album' in \(item)")
+            guard let albumArray = item[Constants.SpotifyJSONKeys.Album] as? [String:AnyObject] else {
+                print("Cannot find key '\(Constants.SpotifyJSONKeys.Album)' in \(item)")
                 return
             }
-            guard let images = albumArray["images"] else {
-                print("Cannot find key 'images' in \(albumArray)")
+            guard let images = albumArray[Constants.SpotifyJSONKeys.Images] else {
+                print("Cannot find key '\(Constants.SpotifyJSONKeys.Images)' in \(albumArray)")
                 return
             }
             let imageDict = images[1] as! [String:AnyObject]
-            let albumURL = imageDict["url"]
-            dict["albumURL"] = albumURL
+            let albumURL = imageDict[Constants.SpotifyJSONKeys.URL]
+            dict[Constants.AudioTrack.AlbumURL] = albumURL
             let newTrack = AudioTrack(dictionary: dict as [String:AnyObject])
             AudioTrackResults.sharedInstance.audioTracks.append(newTrack)
         }

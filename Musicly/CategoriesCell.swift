@@ -26,7 +26,7 @@ extension CategoriesCell: UICollectionViewDataSource, UICollectionViewDelegate {
         return categories!.songs.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SongCell", for: indexPath) as! SongCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.SongCell, for: indexPath) as! SongCell
         if let categories = categories {
             cell.artistTrack = categories.songs[indexPath.row]
         }

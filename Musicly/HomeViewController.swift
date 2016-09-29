@@ -79,7 +79,7 @@ extension HomeViewController: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoriesCell") as! CategoriesCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.CategoriesCell) as! CategoriesCell
         cell.categories = Catalog.sharedInstance.categories[indexPath.section]
         return cell
     }

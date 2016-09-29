@@ -32,8 +32,8 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
         super.viewDidLoad()
         let searchBarText = searchBar.value(forKey: "searchField") as! UITextField
         searchBarText.textColor = UIColor.white
-        let cellNib = UINib(nibName: "NoSearchResultsFound", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: "NoSearchResultsFound")
+        let cellNib = UINib(nibName: Constants.XIBs.NoSearchResults, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: Constants.XIBs.NoSearchResults)
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -53,7 +53,7 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
         if let searchtext = searchBar.text {
             SpotifyClient.sharedInstance.loadTracks(searchtext, completionHandler: { (result, errorString) in
                 guard (errorString == nil) else {
-                    print(errorString)
+                    self.showAlert(errorString: errorString!)
                     return
                 }
                 guard let favorite = self.favorites.artistTrack else {
@@ -79,7 +79,7 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PlayAudio" {
+        if segue.identifier == Constants.Segues.PlayAudio {
             let playAudioViewController = segue.destination as! PlayAudioViewController
             let indexPath = sender as! NSIndexPath
             let audioTrack = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
@@ -109,7 +109,7 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
                 favorites.addToArtistTrack(newArtistTrack)
                 CoreDataStack.sharedInstance().save()
                 hudView.text = "Favorited"
-                hudView.image = "check_icon"
+                hudView.image = Constants.Images.FavoritedSuccessful
             } else {
                 guard let favorite = favorites.artistTrack else {
                     print("Unable to obtain favorites array")
@@ -122,9 +122,18 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
                     }
                 }
                 hudView.text = "Removed"
-                hudView.image = "cancel_btn"
+                hudView.image = Constants.Images.FavoritedRemoved
             }
             cell.configureCheckmarkForCell(track: track)
+        }
+    }
+    
+    func showAlert(errorString: String) {
+        let alert = UIAlertController(title: errorString, message: "Press okay to dismiss", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        performUIUpdatesOnMain {
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -150,9 +159,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if AudioTrackResults.sharedInstance.audioTracks.count == 0 {
-            return tableView.dequeueReusableCell(withIdentifier: "NoSearchResultsFound", for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: Constants.XIBs.NoSearchResults, for: indexPath)
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! AudioTrackTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.SearchCell) as! AudioTrackTableViewCell
             let track = AudioTrackResults.sharedInstance.audioTracks[(indexPath as NSIndexPath).row]
             cell.delegate = self
             cell.configureCell(track)
@@ -167,7 +176,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             CoreDataStack.sharedInstance().context.delete(deleteTrack)
         }
         CoreDataStack.sharedInstance().save()
-        performSegue(withIdentifier: "PlayAudio", sender: indexPath)
+        performSegue(withIdentifier: Constants.Segues.PlayAudio, sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

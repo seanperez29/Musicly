@@ -9,16 +9,14 @@
 import Foundation
 import CoreData
 
-// MARK:  - TypeAliases
 typealias BatchTask = (_ workerContext: NSManagedObjectContext) -> ()
 
-// MARK:  - Notifications
 enum CoreDataStackNotifications : String {
     case ImportingTaskDidFinish = "ImportingTaskDidFinish"
 }
-// MARK:  - Main
+
 struct CoreDataStack {
-    // MARK:  - Properties
+    
     fileprivate let model: NSManagedObjectModel
     fileprivate let coordinator: NSPersistentStoreCoordinator
     fileprivate let modelURL: URL
@@ -27,7 +25,6 @@ struct CoreDataStack {
     fileprivate let backgroundContext: NSManagedObjectContext
     let context: NSManagedObjectContext
     
-    // MARK:  - Initializers
     init?(modelName: String) {
         guard let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd") else {
             print("Unable to find \(modelName)in the main bundle")
@@ -65,16 +62,11 @@ struct CoreDataStack {
         }
     }
     
-    func addStoreTo(coordinator coord : NSPersistentStoreCoordinator,
-                    storeType: String,
-                    configuration: String?,
-                    storeURL: URL,
-                    options : [AnyHashable: Any]?) throws{
+    func addStoreTo(coordinator coord : NSPersistentStoreCoordinator, storeType: String, configuration: String?, storeURL: URL, options : [AnyHashable: Any]?) throws {
         try coord.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: dbURL, options: nil)
     }
 }
 
-// MARK:  - Removing data
 extension CoreDataStack {
     
     func dropAllData() throws {
@@ -83,23 +75,20 @@ extension CoreDataStack {
     }
 }
 
-// MARK:  - Batch processing in the background
 extension CoreDataStack {
     
-    func performBackgroundBatchOperation(_ batch: @escaping BatchTask){
-        backgroundContext.perform(){
+    func performBackgroundBatchOperation(_ batch: @escaping BatchTask) {
+        backgroundContext.perform() {
             batch(self.backgroundContext)
-            do{
+            do {
                 try self.backgroundContext.save()
-            }catch{
+            } catch {
                 fatalError("Error while saving backgroundContext: \(error)")
             }
         }
     }
 }
 
-// MARK:  - Heavy processing in the background.
-// Use this if importing a gazillion objects.
 extension CoreDataStack {
     
     func performBackgroundImportingBatchOperation(_ batch: @escaping BatchTask) {
@@ -112,7 +101,7 @@ extension CoreDataStack {
         let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         moc.name = "Importer"
         moc.persistentStoreCoordinator = tmpCoord
-        moc.perform(){
+        moc.perform() {
             batch(moc)
             do {
                 try moc.save()
@@ -120,28 +109,26 @@ extension CoreDataStack {
                 fatalError("Error saving importer moc: \(moc)")
             }
             let nc = NotificationCenter.default
-            let n = Notification(name: Notification.Name(rawValue: CoreDataStackNotifications.ImportingTaskDidFinish.rawValue),
-                                 object: nil)
+            let n = Notification(name: Notification.Name(rawValue: CoreDataStackNotifications.ImportingTaskDidFinish.rawValue), object: nil)
             nc.post(n)
         }
     }
 }
 
-// MARK:  - Save
 extension CoreDataStack {
     
     func save() {
         context.performAndWait(){
-            if self.context.hasChanges{
+            if self.context.hasChanges {
                 do {
                     try self.context.save()
                 } catch {
                     fatalError("Error while saving main context: \(error)")
                 }
-                self.persistingContext.perform(){
-                    do{
+                self.persistingContext.perform() {
+                    do {
                         try self.persistingContext.save()
-                    }catch{
+                    } catch {
                         fatalError("Error while saving persisting context: \(error)")
                     }
                 }
@@ -149,13 +136,12 @@ extension CoreDataStack {
         }
     }
     
-    func autoSave(_ delayInSeconds : Int){
+    func autoSave(_ delayInSeconds : Int) {
         if delayInSeconds > 0 {
             print("Autosaving")
             save()
             let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
             let time = DispatchTime.now() + Double(Int64(delayInNanoSeconds)) / Double(NSEC_PER_SEC)
-            
             DispatchQueue.main.asyncAfter(deadline: time, execute: {
                 self.autoSave(delayInSeconds)
             })

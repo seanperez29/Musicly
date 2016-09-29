@@ -45,10 +45,10 @@ class AudioTrackTableViewCell: UITableViewCell {
     func configureCheckmarkForCell(track: AudioTrack) {
         if track.hasFavorited {
             favoriteButton.alpha = 1
-            favoriteButton.setImage(UIImage(named: "CheckEdit"), for: .normal)
+            favoriteButton.setImage(UIImage(named: Constants.Images.Checkmark), for: .normal)
         } else {
             favoriteButton.alpha = 0.5
-            favoriteButton.setImage(UIImage(named: "favoriteditem-1"), for: .normal)
+            favoriteButton.setImage(UIImage(named: Constants.Images.AddButton), for: .normal)
         }
     }
     

@@ -36,10 +36,10 @@ class PlayAudioViewController: UIViewController {
     @IBAction func pauseButtonPressed(_ sender: AnyObject) {
         if player.rate == 0 {
             player.play()
-            pauseButton.setImage(UIImage(named: "PauseBtn1"), for: .normal)
+            pauseButton.setImage(UIImage(named: Constants.Images.PauseButton), for: .normal)
         } else {
             player.pause()
-            pauseButton.setImage(UIImage(named: "PlayBtn"), for: .normal)
+            pauseButton.setImage(UIImage(named: Constants.Images.PlayButton), for: .normal)
         }
     }
     

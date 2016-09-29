@@ -75,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             homeViewController.favorites = favorites
             homeViewController.recentlyPlayed = recentlyPlayed
             let searchViewController = tabBarControllers[1] as! SearchViewController
+            tabBarController.selectedViewController = searchViewController
             searchViewController.favorites = favorites
             searchViewController.recentlyPlayed = recentlyPlayed
             let favoritesNavigationController = tabBarControllers[2] as! UINavigationController

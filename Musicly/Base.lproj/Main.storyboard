@@ -143,15 +143,9 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bNI-IP-6O6" id="GPv-me-TPy">
-                                    <frame key="frameInset" width="375" height="79"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1ju-EI-GH9">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="64" id="RMt-1y-lBR"/>
-                                                <constraint firstAttribute="height" constant="64" id="sqo-CE-pA9"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qM-uB-LPA">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="MTV-l8-NGa"/>
@@ -168,6 +162,11 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1ju-EI-GH9">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="RMt-1y-lBR"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="1ju-EI-GH9" firstAttribute="leading" secondItem="GPv-me-TPy" secondAttribute="leading" constant="8" id="5o1-oC-ib2"/>
@@ -178,7 +177,6 @@
                                         <constraint firstItem="9qM-uB-LPA" firstAttribute="top" secondItem="GPv-me-TPy" secondAttribute="topMargin" id="Rnh-8P-HHb"/>
                                         <constraint firstItem="zCx-cm-7Xt" firstAttribute="trailing" secondItem="GPv-me-TPy" secondAttribute="trailingMargin" id="iij-bd-k1T"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="zCx-cm-7Xt" secondAttribute="bottom" constant="13" id="qrz-Zx-ZOH"/>
-                                        <constraint firstItem="zCx-cm-7Xt" firstAttribute="top" secondItem="9qM-uB-LPA" secondAttribute="bottom" constant="8" id="rXH-ih-QNy"/>
                                         <constraint firstItem="9qM-uB-LPA" firstAttribute="trailing" secondItem="GPv-me-TPy" secondAttribute="trailingMargin" id="v3c-UN-UYj"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -230,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7gS-G4-dD4" id="AuL-Jd-WF8">
-                                            <frame key="frameInset" width="375" height="79"/>
+                                            <frame key="frameInset" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-Ps-jpO">

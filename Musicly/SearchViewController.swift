@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var hasSearched = false
     var favorites: Favorited!
     var recentlyPlayed: RecentlyPlayed!
@@ -57,6 +58,8 @@ class SearchViewController: UIViewController {
                     return
                 }
                 performUIUpdatesOnMain {
+                    self.activityIndicator.isHidden = true
+                    self.activityIndicator.stopAnimating()
                     guard let favorite = self.favorites.artistTrack else {
                         print("Unable to obtain favorites array")
                         return
@@ -95,6 +98,8 @@ class SearchViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         performUIUpdatesOnMain {
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -146,6 +151,8 @@ extension SearchViewController: AudioTrackTableViewCellDelegate {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchView.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         hasSearched = true
         performSearch()
     }

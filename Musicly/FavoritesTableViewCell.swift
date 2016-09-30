@@ -9,7 +9,8 @@
 import UIKit
 
 class FavoritesTableViewCell: UITableViewCell {
-
+    
+    //There appears to be a bug on these UI elements in the storyboard (albumImage, artistNameLabel, and songNameLabel). In the storyboard they continue to be stretched out to approximately 1000x1000 pixels, and continue to do so no matter multiple fixes and adjustments. However, upon running the app, everything works and is displayed as it should with their appropriate constraints.
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!

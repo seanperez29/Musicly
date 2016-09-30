@@ -54,7 +54,7 @@ class SearchViewController: UIViewController {
         if let searchtext = searchBar.text {
             SpotifyClient.sharedInstance.loadTracks(searchtext, completionHandler: { (result, errorString) in
                 guard (errorString == nil) else {
-                    self.showAlert(errorString: errorString!)
+                    //self.showAlert(errorString: errorString!)
                     return
                 }
                 performUIUpdatesOnMain {
@@ -90,17 +90,6 @@ class SearchViewController: UIViewController {
             recentlyPlayed.addToArtistTrack(artistTrack)
             CoreDataStack.sharedInstance().save()
             playAudioViewController.audioTrack = audioTrack
-        }
-    }
-    
-    func showAlert(errorString: String) {
-        let alert = UIAlertController(title: errorString, message: "Press okay to dismiss", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        performUIUpdatesOnMain {
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
-            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -181,15 +170,28 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performRecentlyPlayedFetch()
-        let audioTracks = recentlyPlayedFetchedResultsController.fetchedObjects!
-        if audioTracks.count > 9 {
-            let deleteTrack = audioTracks[0]
-            CoreDataStack.sharedInstance().context.delete(deleteTrack)
-        }
-        CoreDataStack.sharedInstance().save()
-        performSegue(withIdentifier: Constants.Segues.PlayAudio, sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
+        let audioTrack = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
+        ReachabilityConvenience.sharedInstance.setupReachability(hostName: audioTrack.mediaURL, useClosures: true) { (hasConnection) in
+            if hasConnection {
+                self.performRecentlyPlayedFetch()
+                let audioTracks = self.recentlyPlayedFetchedResultsController.fetchedObjects!
+                if audioTracks.count > 9 {
+                    let deleteTrack = audioTracks[0]
+                    CoreDataStack.sharedInstance().context.delete(deleteTrack)
+                }
+                CoreDataStack.sharedInstance().save()
+                self.performSegue(withIdentifier: Constants.Segues.PlayAudio, sender: indexPath)
+            } else {
+                performUIUpdatesOnMain {
+                    let alert = showAlert(errorString: "Unable to obtain internet access")
+                    self.activityIndicator.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+        ReachabilityConvenience.sharedInstance.startNotifier()
     }
 }
 

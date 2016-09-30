@@ -10,10 +10,15 @@ import Foundation
 import UIKit
 import AVFoundation
 
+protocol CategoriesCellDelegate: class {
+    func categoriesCellController(controller: CategoriesCell, success: Bool, didDeleteTrack track: ArtistTrack)
+}
+
 class CategoriesCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     var playerItem: AVPlayerItem!
     var player: AVPlayer!
+    weak var delegate: CategoriesCellDelegate?
     var categories: Category? = nil {
         didSet {
             collectionView.reloadData()
@@ -32,5 +37,20 @@ extension CategoriesCell: UICollectionViewDataSource, UICollectionViewDelegate {
             cell.artistTrack = categories.songs[indexPath.row]
         }
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let categories = categories else {
+            print("No categories present")
+            return
+        }
+        let artistTrack = categories.songs[indexPath.row]
+        ReachabilityConvenience.sharedInstance.setupReachability(hostName: artistTrack.media, useClosures: true) { (hasConnection) in
+            if hasConnection {
+                self.delegate?.categoriesCellController(controller: self, success: true, didDeleteTrack: artistTrack)
+            } else {
+                self.delegate?.categoriesCellController(controller: self, success: false, didDeleteTrack: artistTrack)
+            }
+        }
+        ReachabilityConvenience.sharedInstance.startNotifier()
     }
 }

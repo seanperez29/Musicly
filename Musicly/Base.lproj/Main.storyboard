@@ -84,7 +84,6 @@
                                                                 <outlet property="albumImage" destination="bW2-dk-I2t" id="QoH-Yh-Dbo"/>
                                                                 <outlet property="artistNameLabel" destination="W0b-Q6-aL9" id="ewD-1L-5PZ"/>
                                                                 <outlet property="songNameLabel" destination="705-kJ-iwc" id="kBv-bf-FVC"/>
-                                                                <segue destination="LYD-Np-51u" kind="presentation" identifier="PlayFromSongCell" id="CiW-jD-ca9"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -123,6 +122,7 @@
                     <navigationItem key="navigationItem" title="Home" id="aL8-n4-PQE"/>
                     <connections>
                         <outlet property="tableView" destination="UPX-5Q-men" id="mfa-cc-KGB"/>
+                        <segue destination="LYD-Np-51u" kind="presentation" identifier="PlayFromSongCell" id="oOq-Oh-zjh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -143,7 +143,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bNI-IP-6O6" id="GPv-me-TPy">
-                                    <frame key="frameInset" width="375" height="80"/>
+                                    <frame key="frameInset" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qM-uB-LPA">
@@ -228,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7gS-G4-dD4" id="AuL-Jd-WF8">
-                                            <frame key="frameInset" width="375" height="79.5"/>
+                                            <frame key="frameInset" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-Ps-jpO">
@@ -519,7 +519,7 @@
         <image name="searchbtn" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lla-C2-xdF"/>
+        <segue reference="oOq-Oh-zjh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

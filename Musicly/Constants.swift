@@ -71,6 +71,7 @@ class Constants {
     struct Segues {
         static let PlayAudio = "PlayAudio"
         static let PlayFavorite = "PlayFavorite"
+        static let PlayFromSongCell = "PlayFromSongCell"
     }
 
 }

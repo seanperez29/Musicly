@@ -52,6 +52,7 @@ class HomeViewController: UIViewController {
             fatalError("Could not perform fetch")
         }
     }
+    
     func performRecentlyPlayedFetch() {
         do {
             try recentlyPlayedFetchedResultsController.performFetch()
@@ -61,9 +62,10 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let songCell = sender as? SongCell, let playAudioViewController = segue.destination as? PlayAudioViewController {
-            let artistTrack = songCell.artistTrack
-            playAudioViewController.artistTrack = artistTrack
+        if segue.identifier == Constants.Segues.PlayFromSongCell {
+            if let artistTrack = sender as? ArtistTrack, let playAudioViewController = segue.destination as? PlayAudioViewController {
+                playAudioViewController.artistTrack = artistTrack
+            }
         }
     }
 }
@@ -81,6 +83,21 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.CategoriesCell) as! CategoriesCell
         cell.categories = Catalog.sharedInstance.categories[indexPath.section]
+        cell.delegate = self
         return cell
     }
 }
+
+extension HomeViewController: CategoriesCellDelegate {
+    func categoriesCellController(controller: CategoriesCell, success: Bool, didDeleteTrack track: ArtistTrack) {
+        if success {
+            self.performSegue(withIdentifier: Constants.Segues.PlayFromSongCell, sender: track)
+        } else {
+            performUIUpdatesOnMain {
+                let alert = showAlert(errorString: "Unable to obtain internet access")
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+}
+

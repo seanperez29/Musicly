@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, FavoritesViewControllerDelegate {
+class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -56,18 +56,18 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
                     self.showAlert(errorString: errorString!)
                     return
                 }
-                guard let favorite = self.favorites.artistTrack else {
-                    print("Unable to obtain favorites array")
-                    return
-                }
-                for artistTrack in favorite {
-                    for track in AudioTrackResults.sharedInstance.audioTracks {
-                        if track.id == (artistTrack as! ArtistTrack).trackID {
-                            track.hasFavorited = true
+                performUIUpdatesOnMain {
+                    guard let favorite = self.favorites.artistTrack else {
+                        print("Unable to obtain favorites array")
+                        return
+                    }
+                    for artistTrack in favorite {
+                        for track in AudioTrackResults.sharedInstance.audioTracks {
+                            if track.id == (artistTrack as! ArtistTrack).trackID {
+                                track.hasFavorited = true
+                            }
                         }
                     }
-                }
-                performUIUpdatesOnMain {
                     self.tableView.reloadData()
                 }
             })
@@ -90,6 +90,18 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
         }
     }
     
+    func showAlert(errorString: String) {
+        let alert = UIAlertController(title: errorString, message: "Press okay to dismiss", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        performUIUpdatesOnMain {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+extension SearchViewController: FavoritesViewControllerDelegate {
     func favoritesViewController(viewController: FavoritesViewController, didDeleteTrack track: ArtistTrack) {
         for artistTrack in AudioTrackResults.sharedInstance.audioTracks {
             if artistTrack.id == track.trackID {
@@ -98,7 +110,9 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
             }
         }
     }
-    
+}
+
+extension SearchViewController: AudioTrackTableViewCellDelegate {
     func audioTrackTableViewCell(cell: AudioTrackTableViewCell, didPressFavorited button: UIButton) {
         if let indexPath = tableView.indexPath(for: cell) {
             let track = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
@@ -125,15 +139,6 @@ class SearchViewController: UIViewController, AudioTrackTableViewCellDelegate, F
                 hudView.image = Constants.Images.FavoritedRemoved
             }
             cell.configureCheckmarkForCell(track: track)
-        }
-    }
-    
-    func showAlert(errorString: String) {
-        let alert = UIAlertController(title: errorString, message: "Press okay to dismiss", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        performUIUpdatesOnMain {
-            self.present(alert, animated: true, completion: nil)
         }
     }
 }

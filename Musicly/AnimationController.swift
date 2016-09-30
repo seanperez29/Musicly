@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class AnimationController: NSObject, UIViewControllerAnimatedTransitioning {
+    //The inspiration of the animation and certain UI elements of the 'PlayAudioViewController', as well as the HudView, were learned from a Ray Wenderlich tutorial. Aspects were customized and altered to fit my needs.
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }

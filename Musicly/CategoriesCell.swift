@@ -21,6 +21,7 @@ class CategoriesCell: UITableViewCell {
     }
 }
 
+//The code associated with the injection of a CollectionView into a TableView in order to allow horizontal scrolling within separate categories was learned from a Robert Chen online tutorial.
 extension CategoriesCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories!.songs.count

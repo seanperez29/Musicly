@@ -68,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             favorites = fetchFavorites()
             recentlyPlayed = fetchRecentlyPlayed()
         }
+        //The below method of passing along data from the app delegate, in my case the appropriate fetch requests in the functions above, which all view controllers will be reusing, was learned from a Ray Wenderlich tutorial. I try to minimize code in the app delegate, but this appeared to be the best structure for this as advised by Ray W. This dependency injection method was useful in this situation in order to keep all view controllers separate and unaware of one another, while still allowing for a 'DRY' format throughout the associated view controllers. 
         let tabBarController = window!.rootViewController as! UITabBarController
         if let tabBarControllers = tabBarController.viewControllers {
             let homeNavigationController = tabBarControllers[0] as! UINavigationController

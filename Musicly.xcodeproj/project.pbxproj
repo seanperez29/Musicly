@@ -115,8 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				911AB6C41D933512007981DE /* Spotify */,
-				911AB6C31D932E17007981DE /* View */,
 				911AB6C21D932E10007981DE /* Model */,
+				911AB6C31D932E17007981DE /* View */,
 				911AB6C11D932E0A007981DE /* Controller */,
 				911AB6AB1D9321C7007981DE /* AppDelegate.swift */,
 				911AB6B41D9321C7007981DE /* Assets.xcassets */,

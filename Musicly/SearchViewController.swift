@@ -101,7 +101,7 @@ class SearchViewController: UIViewController {
                     doesTrackExist = false
                 }
             }
-            if doesTrackExist == false {
+            if recentlyPlayedTracks.count == 0 || doesTrackExist == false {
                 let artistTrack = ArtistTrack(audioTrack: audioTrack, context: CoreDataStack.sharedInstance().context)
                 recentlyPlayed.addToArtistTrack(artistTrack)
                 CoreDataStack.sharedInstance().save()

@@ -88,12 +88,11 @@ class PlayAudioViewController: UIViewController {
         let playerCurrentTime = player.currentTime()
         let playerTimeInSeconds = CMTimeGetSeconds(playerCurrentTime)
         let progressBarTimer = Float(playerTimeInSeconds/30)
-        print(progressBarTimer)
         if progressBarTimer > 0.0 {
             activityIndicator.isHidden = true
             activityIndicator.stopAnimating()
         }
-        progressBar.setProgress(progressBarTimer, animated: true)
+        progressBar.setProgress(progressBarTimer, animated: false)
         if progressBarTimer >= 1.0 {
             timer.invalidate()
         }

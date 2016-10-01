@@ -16,11 +16,14 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var audioTrack: AudioTrack!
     var artistTrack: ArtistTrack!
     var dataTask: URLSessionDataTask?
     var playerItem: AVPlayerItem!
     var player: AVPlayer!
+    var timer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +34,17 @@ class PlayAudioViewController: UIViewController {
         tap.delegate = self
         view.addGestureRecognizer(tap)
         popupView.layer.cornerRadius = 10
+        activityIndicator.startAnimating()
     }
     
     @IBAction func pauseButtonPressed(_ sender: AnyObject) {
         if player.rate == 0 {
             player.play()
+            setTimer()
             pauseButton.setImage(UIImage(named: Constants.Images.PauseButton), for: .normal)
         } else {
             player.pause()
+            timer.invalidate()
             pauseButton.setImage(UIImage(named: Constants.Images.PlayButton), for: .normal)
         }
     }
@@ -54,6 +60,7 @@ class PlayAudioViewController: UIViewController {
             artistNameLabel.text = artistTrack.artist
             songNameLabel.text = artistTrack.song
             player.play()
+            setTimer()
         } else {
             dataTask = SpotifyClient.sharedInstance.getImage(audioTrack.albumURL, completionHandler: { (imageData, errorString) in
                 guard (errorString == nil) else {
@@ -73,7 +80,27 @@ class PlayAudioViewController: UIViewController {
             artistNameLabel.text = audioTrack!.artistName
             songNameLabel.text = audioTrack!.songName
             player.play()
+            setTimer()
         }
+    }
+    
+    func runTimer() {
+        let playerCurrentTime = player.currentTime()
+        let playerTimeInSeconds = CMTimeGetSeconds(playerCurrentTime)
+        let progressBarTimer = Float(playerTimeInSeconds/30)
+        print(progressBarTimer)
+        if progressBarTimer > 0.0 {
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+        }
+        progressBar.setProgress(progressBarTimer, animated: true)
+        if progressBarTimer >= 1.0 {
+            timer.invalidate()
+        }
+    }
+    
+    func setTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(PlayAudioViewController.runTimer), userInfo: nil, repeats: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -83,6 +110,7 @@ class PlayAudioViewController: UIViewController {
     }
     
     @IBAction func closeButtonPressed(_ sender: AnyObject) {
+        timer.invalidate()
         dismiss(animated: true, completion: nil)
     }
     

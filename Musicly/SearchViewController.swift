@@ -54,7 +54,12 @@ class SearchViewController: UIViewController {
         if let searchtext = searchBar.text {
             SpotifyClient.sharedInstance.loadTracks(searchtext, completionHandler: { (result, errorString) in
                 guard (errorString == nil) else {
-                    //self.showAlert(errorString: errorString!)
+                    performUIUpdatesOnMain {
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                        let alert = showAlert(errorString: errorString!)
+                        self.present(alert, animated: true, completion: nil)
+                    }
                     return
                 }
                 performUIUpdatesOnMain {

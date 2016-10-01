@@ -396,7 +396,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBm-3N-ABP">
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBm-3N-ABP">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="QwC-Kv-czh"/>
                                             <constraint firstAttribute="width" constant="55" id="mjw-jP-V7e"/>
@@ -406,6 +406,18 @@
                                             <action selector="pauseButtonPressed:" destination="LYD-Np-51u" eventType="touchUpInside" id="CBT-Yy-sGO"/>
                                         </connections>
                                     </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JY8-kj-mGl">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="AJf-nL-EAf"/>
+                                        </constraints>
+                                        <color key="progressTintColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    </progressView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fQR-hu-ois">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="dc7-Hp-ONN"/>
+                                            <constraint firstAttribute="width" constant="20" id="pY6-Ca-ScK"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -413,16 +425,21 @@
                                     <constraint firstItem="DTk-Hr-7sE" firstAttribute="top" secondItem="zDc-ca-iMf" secondAttribute="bottom" constant="4" id="4xL-PE-azs"/>
                                     <constraint firstItem="Wi7-Xy-DY5" firstAttribute="top" secondItem="uwe-xf-WOG" secondAttribute="top" constant="3" id="AbY-1a-LNy"/>
                                     <constraint firstAttribute="trailing" secondItem="G4T-6j-WYq" secondAttribute="trailing" constant="8" id="DeW-iN-1RA"/>
+                                    <constraint firstItem="FBm-3N-ABP" firstAttribute="top" secondItem="JY8-kj-mGl" secondAttribute="bottom" constant="6" id="Erk-Zk-jcW"/>
                                     <constraint firstItem="FBm-3N-ABP" firstAttribute="centerX" secondItem="uwe-xf-WOG" secondAttribute="centerX" id="Hoa-qT-11g"/>
+                                    <constraint firstItem="JY8-kj-mGl" firstAttribute="centerX" secondItem="uwe-xf-WOG" secondAttribute="centerX" id="I62-RO-Ne4"/>
                                     <constraint firstItem="G4T-6j-WYq" firstAttribute="leading" secondItem="uwe-xf-WOG" secondAttribute="leading" constant="8" id="IYN-Mo-MiT"/>
+                                    <constraint firstAttribute="bottom" secondItem="fQR-hu-ois" secondAttribute="bottom" constant="58" id="Iup-cj-MnT"/>
                                     <constraint firstAttribute="trailing" secondItem="DTk-Hr-7sE" secondAttribute="trailing" constant="8" id="Rt4-ut-Dph"/>
                                     <constraint firstAttribute="bottom" secondItem="FBm-3N-ABP" secondAttribute="bottom" constant="6" id="ZQP-I3-I1r"/>
                                     <constraint firstItem="DTk-Hr-7sE" firstAttribute="leading" secondItem="uwe-xf-WOG" secondAttribute="leading" constant="8" id="f0u-0e-WBB"/>
                                     <constraint firstItem="zDc-ca-iMf" firstAttribute="top" secondItem="uwe-xf-WOG" secondAttribute="top" constant="8" id="jr5-VF-XDU"/>
                                     <constraint firstAttribute="height" constant="260" id="mQ2-FI-7CN"/>
+                                    <constraint firstAttribute="trailing" secondItem="fQR-hu-ois" secondAttribute="trailing" constant="13" id="mvn-Pe-2sH"/>
                                     <constraint firstAttribute="trailing" secondItem="Wi7-Xy-DY5" secondAttribute="trailing" constant="3" id="qSn-Id-L69"/>
                                     <constraint firstAttribute="width" constant="260" id="rMO-2n-BBM"/>
                                     <constraint firstItem="G4T-6j-WYq" firstAttribute="top" secondItem="DTk-Hr-7sE" secondAttribute="bottom" constant="4" id="t8N-Iq-qez"/>
+                                    <constraint firstItem="JY8-kj-mGl" firstAttribute="top" secondItem="G4T-6j-WYq" secondAttribute="bottom" constant="5" id="y9v-rz-xlS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -433,10 +450,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="fQR-hu-ois" id="E2e-Bg-vPt"/>
                         <outlet property="albumImage" destination="zDc-ca-iMf" id="W2W-Wc-Gx2"/>
                         <outlet property="artistNameLabel" destination="DTk-Hr-7sE" id="k7S-61-sxH"/>
                         <outlet property="pauseButton" destination="FBm-3N-ABP" id="MI7-Z9-bQl"/>
                         <outlet property="popupView" destination="uwe-xf-WOG" id="pGS-Mn-vLj"/>
+                        <outlet property="progressBar" destination="JY8-kj-mGl" id="moJ-dy-9zt"/>
                         <outlet property="songNameLabel" destination="G4T-6j-WYq" id="h6z-qw-9Rb"/>
                     </connections>
                 </viewController>

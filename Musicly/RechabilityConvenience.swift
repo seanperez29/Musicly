@@ -23,7 +23,6 @@ class ReachabilityConvenience {
                     self.stopNotifier()
                     completionHander(true)
                 }
-               
             }
             reachability?.whenUnreachable = { reachability in
                 DispatchQueue.main.async {

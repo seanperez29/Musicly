@@ -88,12 +88,24 @@ class SearchViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Segues.PlayAudio {
+            var doesTrackExist: Bool!
             let playAudioViewController = segue.destination as! PlayAudioViewController
             let indexPath = sender as! NSIndexPath
             let audioTrack = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
-            let artistTrack = ArtistTrack(audioTrack: audioTrack, context: CoreDataStack.sharedInstance().context)
-            recentlyPlayed.addToArtistTrack(artistTrack)
-            CoreDataStack.sharedInstance().save()
+            let recentlyPlayedTracks = recentlyPlayedFetchedResultsController.fetchedObjects!
+            for track in recentlyPlayedTracks {
+                if track.trackID == audioTrack.id {
+                    doesTrackExist = true
+                    break
+                } else {
+                    doesTrackExist = false
+                }
+            }
+            if doesTrackExist == false {
+                let artistTrack = ArtistTrack(audioTrack: audioTrack, context: CoreDataStack.sharedInstance().context)
+                recentlyPlayed.addToArtistTrack(artistTrack)
+                CoreDataStack.sharedInstance().save()
+            }
             playAudioViewController.audioTrack = audioTrack
         }
     }

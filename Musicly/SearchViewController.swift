@@ -188,8 +188,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let audioTrack = AudioTrackResults.sharedInstance.audioTracks[indexPath.row]
-        ReachabilityConvenience.sharedInstance.setupReachability(hostName: audioTrack.mediaURL, useClosures: true) { (hasConnection) in
+        ReachabilityConvenience.sharedInstance.performReachability { (hasConnection) in
             if hasConnection {
                 self.performRecentlyPlayedFetch()
                 let audioTracks = self.recentlyPlayedFetchedResultsController.fetchedObjects!
@@ -208,7 +207,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
-        ReachabilityConvenience.sharedInstance.startNotifier()
     }
 }
 

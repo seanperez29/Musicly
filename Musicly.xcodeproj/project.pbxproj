@@ -45,9 +45,13 @@
 		91441C621D9A2BB200399D2F /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91441C611D9A2BB200399D2F /* SongCell.swift */; };
 		915105B41D95C83E003B8B58 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915105B31D95C83E003B8B58 /* AnimationController.swift */; };
 		915105B61D95D22C003B8B58 /* DismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915105B51D95D22C003B8B58 /* DismissAnimationController.swift */; };
+		916243B29C2A267AB288045F /* Pods_Musicly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D93D5BD8AF6C5396C0C7CB /* Pods_Musicly.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		465FC421F5BD527259F61DE3 /* Pods-Musicly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Musicly.release.xcconfig"; path = "Pods/Target Support Files/Pods-Musicly/Pods-Musicly.release.xcconfig"; sourceTree = "<group>"; };
+		60197B5A1CFF6DA6F1F96A36 /* Pods-Musicly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Musicly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Musicly/Pods-Musicly.debug.xcconfig"; sourceTree = "<group>"; };
+		79D93D5BD8AF6C5396C0C7CB /* Pods_Musicly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Musicly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91115FF91D97040E00712B14 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		91115FFC1D9711F200712B14 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9116FE8F1D9527DD009A5BDA /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
@@ -95,17 +99,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916243B29C2A267AB288045F /* Pods_Musicly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1996DE53FD8D2906A0C79AAD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60197B5A1CFF6DA6F1F96A36 /* Pods-Musicly.debug.xcconfig */,
+				465FC421F5BD527259F61DE3 /* Pods-Musicly.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		911AB69F1D9321C7007981DE = {
 			isa = PBXGroup;
 			children = (
 				911AB6AA1D9321C7007981DE /* Musicly */,
 				911AB6A91D9321C7007981DE /* Products */,
+				1996DE53FD8D2906A0C79AAD /* Pods */,
+				BB5FA505F244D9F7E245BE24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +219,14 @@
 			name = ManagedObjects;
 			sourceTree = "<group>";
 		};
+		BB5FA505F244D9F7E245BE24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79D93D5BD8AF6C5396C0C7CB /* Pods_Musicly.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,9 +234,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 911AB6BC1D9321C7007981DE /* Build configuration list for PBXNativeTarget "Musicly" */;
 			buildPhases = (
+				7EE452A08B4C2563EB10E936 /* [CP] Check Pods Manifest.lock */,
 				911AB6A41D9321C7007981DE /* Sources */,
 				911AB6A51D9321C7007981DE /* Frameworks */,
 				911AB6A61D9321C7007981DE /* Resources */,
+				7B934EBDCA6982118543CF76 /* [CP] Embed Pods Frameworks */,
+				860196F2C5412E63D71AA23A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,7 +257,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = SeanPerez;
 				TargetAttributes = {
 					911AB6A71D9321C7007981DE = {
@@ -271,6 +298,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B934EBDCA6982118543CF76 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Musicly/Pods-Musicly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EE452A08B4C2563EB10E936 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		860196F2C5412E63D71AA23A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Musicly/Pods-Musicly-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		911AB6A41D9321C7007981DE /* Sources */ = {
@@ -354,6 +429,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -403,6 +479,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -429,6 +506,7 @@
 		};
 		911AB6BD1D9321C7007981DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60197B5A1CFF6DA6F1F96A36 /* Pods-Musicly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PW5CGBBSUC;
@@ -443,6 +521,7 @@
 		};
 		911AB6BE1D9321C7007981DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 465FC421F5BD527259F61DE3 /* Pods-Musicly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PW5CGBBSUC;

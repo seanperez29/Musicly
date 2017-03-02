@@ -75,18 +75,16 @@ extension FavoritesViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let audioTrack = fetchedResultsController.object(at: indexPath)
-        ReachabilityConvenience.sharedInstance.setupReachability(hostName: audioTrack.media, useClosures: true) { (hasConnection) in
+        ReachabilityConvenience.sharedInstance.performReachability { (hasConnection) in
             if hasConnection {
-                self.performSegue(withIdentifier: Constants.Segues.PlayFavorite, sender: indexPath)
-            } else {
                 performUIUpdatesOnMain {
-                    let alert = showAlert(errorString: "Unable to obtain internet access")
-                    self.present(alert, animated: true, completion: nil)
+                    self.performSegue(withIdentifier: Constants.Segues.PlayFavorite, sender: indexPath)
                 }
+            } else {
+                let alert = showAlert(errorString: "Unable to obtain internet access")
+                self.present(alert, animated: true, completion: nil)
             }
         }
-        ReachabilityConvenience.sharedInstance.startNotifier()
     }
 }
 

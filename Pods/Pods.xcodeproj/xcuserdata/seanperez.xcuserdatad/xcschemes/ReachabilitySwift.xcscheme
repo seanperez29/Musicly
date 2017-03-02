@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "911AB6A71D9321C7007981DE"
-               BuildableName = "Musicly.app"
-               BlueprintName = "Musicly"
-               ReferencedContainer = "container:Musicly.xcodeproj">
+               BlueprintIdentifier = "DE67218AD0269D50B8A65C127FEAE2C8"
+               BuildableName = "ReachabilitySwift.framework"
+               BlueprintName = "ReachabilitySwift"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "911AB6A71D9321C7007981DE"
-            BuildableName = "Musicly.app"
-            BlueprintName = "Musicly"
-            ReferencedContainer = "container:Musicly.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,22 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "911AB6A71D9321C7007981DE"
-            BuildableName = "Musicly.app"
-            BlueprintName = "Musicly"
-            ReferencedContainer = "container:Musicly.xcodeproj">
+            BlueprintIdentifier = "DE67218AD0269D50B8A65C127FEAE2C8"
+            BuildableName = "ReachabilitySwift.framework"
+            BlueprintName = "ReachabilitySwift"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-com.apple.CoreData.ConcurrencyDebug 1"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -76,16 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "911AB6A71D9321C7007981DE"
-            BuildableName = "Musicly.app"
-            BlueprintName = "Musicly"
-            ReferencedContainer = "container:Musicly.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -11,41 +11,31 @@ import SystemConfiguration
 
 class ReachabilityConvenience {
     static let sharedInstance = ReachabilityConvenience()
-    var reachability: Reachability!
-
-    func setupReachability(hostName: String, useClosures: Bool, completionHander: @escaping (_ hasConnection:Bool) -> Void) {
-        let reachability = Reachability(hostname: hostName)
-        self.reachability = reachability
-        
-        if useClosures {
-            reachability?.whenReachable = { reachability in
-                DispatchQueue.main.async {
-                    self.stopNotifier()
-                    completionHander(true)
-                }
-            }
-            reachability?.whenUnreachable = { reachability in
-                DispatchQueue.main.async {
-                    self.stopNotifier()
-                    completionHander(false)
-                }
-            }
-        }
-    }
-
-    func startNotifier() {
-        do {
-            try reachability?.startNotifier()
-        } catch {
+    func performReachability(completionHandler: @escaping (_ hasConnection: Bool) -> Void) {
+        guard let reachability = Reachability() else {
+            completionHandler(false)
             return
         }
+        reachability.whenReachable = { reachability in
+            DispatchQueue.main.async {
+                if reachability.isReachable {
+                    reachability.stopNotifier()
+                    completionHandler(true)
+                }
+            }
+        }
+        reachability.whenUnreachable = { reachability in
+            reachability.stopNotifier()
+            completionHandler(false)
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
     }
     
-    func stopNotifier() {
-        reachability?.stopNotifier()
-        NotificationCenter.default.removeObserver(self, name: ReachabilityChangedNotification, object: nil)
-        reachability = nil
-    }
     
 }
-    
+

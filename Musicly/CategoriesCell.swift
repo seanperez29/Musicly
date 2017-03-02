@@ -44,13 +44,12 @@ extension CategoriesCell: UICollectionViewDataSource, UICollectionViewDelegate {
             return
         }
         let artistTrack = categories.songs[indexPath.row]
-        ReachabilityConvenience.sharedInstance.setupReachability(hostName: artistTrack.media, useClosures: true) { (hasConnection) in
+        ReachabilityConvenience.sharedInstance.performReachability { (hasConnection) in
             if hasConnection {
                 self.delegate?.categoriesCellController(controller: self, success: true, didDeleteTrack: artistTrack)
             } else {
                 self.delegate?.categoriesCellController(controller: self, success: false, didDeleteTrack: artistTrack)
             }
         }
-        ReachabilityConvenience.sharedInstance.startNotifier()
     }
 }

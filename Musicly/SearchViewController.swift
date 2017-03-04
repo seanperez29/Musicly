@@ -188,22 +188,26 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        ReachabilityConvenience.sharedInstance.performReachability { (hasConnection) in
-            if hasConnection {
-                self.performRecentlyPlayedFetch()
-                let audioTracks = self.recentlyPlayedFetchedResultsController.fetchedObjects!
-                if audioTracks.count > 9 {
-                    let deleteTrack = audioTracks[0]
-                    CoreDataStack.sharedInstance().context.delete(deleteTrack)
-                }
-                CoreDataStack.sharedInstance().save()
-                self.performSegue(withIdentifier: Constants.Segues.PlayAudio, sender: indexPath)
-            } else {
-                performUIUpdatesOnMain {
-                    let alert = showAlert(errorString: "Unable to obtain internet access")
-                    self.activityIndicator.isHidden = true
-                    self.activityIndicator.stopAnimating()
-                    self.present(alert, animated: true, completion: nil)
+        if hasSearched && AudioTrackResults.sharedInstance.audioTracks.isEmpty {
+            return
+        } else {
+            ReachabilityConvenience.sharedInstance.performReachability { (hasConnection) in
+                if hasConnection {
+                    self.performRecentlyPlayedFetch()
+                    let audioTracks = self.recentlyPlayedFetchedResultsController.fetchedObjects!
+                    if audioTracks.count > 9 {
+                        let deleteTrack = audioTracks[0]
+                        CoreDataStack.sharedInstance().context.delete(deleteTrack)
+                    }
+                    CoreDataStack.sharedInstance().save()
+                    self.performSegue(withIdentifier: Constants.Segues.PlayAudio, sender: indexPath)
+                } else {
+                    performUIUpdatesOnMain {
+                        let alert = showAlert(errorString: "Unable to obtain internet access")
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
         }

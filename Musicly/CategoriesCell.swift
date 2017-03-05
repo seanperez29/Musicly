@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 
 protocol CategoriesCellDelegate: class {
-    func categoriesCellController(controller: CategoriesCell, success: Bool, didDeleteTrack track: ArtistTrack)
+    func categoriesCellController(controller: CategoriesCell, success: Bool, didSelectTrack track: ArtistTrack)
 }
 
 class CategoriesCell: UITableViewCell {
@@ -46,9 +46,9 @@ extension CategoriesCell: UICollectionViewDataSource, UICollectionViewDelegate {
         let artistTrack = categories.songs[indexPath.row]
         ReachabilityConvenience.sharedInstance.performReachability { (hasConnection) in
             if hasConnection {
-                self.delegate?.categoriesCellController(controller: self, success: true, didDeleteTrack: artistTrack)
+                self.delegate?.categoriesCellController(controller: self, success: true, didSelectTrack: artistTrack)
             } else {
-                self.delegate?.categoriesCellController(controller: self, success: false, didDeleteTrack: artistTrack)
+                self.delegate?.categoriesCellController(controller: self, success: false, didSelectTrack: artistTrack)
             }
         }
     }

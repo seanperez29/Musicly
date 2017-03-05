@@ -89,7 +89,7 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: CategoriesCellDelegate {
-    func categoriesCellController(controller: CategoriesCell, success: Bool, didDeleteTrack track: ArtistTrack) {
+    func categoriesCellController(controller: CategoriesCell, success: Bool, didSelectTrack track: ArtistTrack) {
         if success {
             self.performSegue(withIdentifier: Constants.Segues.PlayFromSongCell, sender: track)
         } else {

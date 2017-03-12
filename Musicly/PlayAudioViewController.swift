@@ -28,12 +28,10 @@ class PlayAudioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTrackDetailsAndPlay()
-        view.backgroundColor = UIColor.clear
         let tap = UITapGestureRecognizer(target: self, action: #selector(PlayAudioViewController.closeButtonPressed(_:)))
         tap.cancelsTouchesInView = false
         tap.delegate = self
         view.addGestureRecognizer(tap)
-        popupView.layer.cornerRadius = 10
         activityIndicator.startAnimating()
     }
     

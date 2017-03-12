@@ -200,7 +200,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                         CoreDataStack.sharedInstance().context.delete(deleteTrack)
                     }
                     CoreDataStack.sharedInstance().save()
-                    self.performSegue(withIdentifier: Constants.Segues.PlayAudio, sender: indexPath)
+                    performUIUpdatesOnMain {
+                        self.performSegue(withIdentifier: Constants.Segues.PlayAudio, sender: indexPath)
+                    }
                 } else {
                     performUIUpdatesOnMain {
                         let alert = showAlert(errorString: "Unable to obtain internet access")

@@ -16,6 +16,7 @@ protocol FavoritesViewControllerDelegate: class {
 class FavoritesViewController: UITableViewController {
     
     var favorites: Favorited!
+    var recentlyPlayed: RecentlyPlayed!
     weak var delegate: FavoritesViewControllerDelegate?
     lazy var fetchedResultsController: NSFetchedResultsController<ArtistTrack> = {
        let fetchRequest = NSFetchRequest<ArtistTrack>()
@@ -26,6 +27,16 @@ class FavoritesViewController: UITableViewController {
         fetchRequest.predicate = NSPredicate(format: "favorited == %@", self.favorites)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
+    lazy var recentlyPlayedFetchedResultsController: NSFetchedResultsController<ArtistTrack> = {
+        let fetchRequest = NSFetchRequest<ArtistTrack>()
+        let entity = ArtistTrack.entity()
+        fetchRequest.entity = entity
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = NSPredicate(format: "recentlyPlayed == %@", self.recentlyPlayed)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }()
 
@@ -42,11 +53,33 @@ class FavoritesViewController: UITableViewController {
         }
     }
     
+    func performRecentlyPlayedFetch() {
+        do {
+            try recentlyPlayedFetchedResultsController.performFetch()
+        } catch {
+            fatalError("Could not perform fetch")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Segues.PlayFavorite {
+            var doesTrackExist: Bool!
             let playAudioViewController = segue.destination as! PlayAudioViewController
             let indexPath = sender as! IndexPath
-            let artistTrack = fetchedResultsController.object(at: indexPath) 
+            let artistTrack = fetchedResultsController.object(at: indexPath)
+            let recentlyPlayedTracks = recentlyPlayedFetchedResultsController.fetchedObjects!
+            for track in recentlyPlayedTracks {
+                if track.trackID == artistTrack.trackID {
+                    doesTrackExist = true
+                    break
+                } else {
+                    doesTrackExist = false
+                }
+            }
+            if recentlyPlayedTracks.count == 0 || doesTrackExist == false {
+                recentlyPlayed.addToArtistTrack(artistTrack)
+                CoreDataStack.sharedInstance().save()
+            }
             playAudioViewController.artistTrack = artistTrack
         }
     }
@@ -77,6 +110,13 @@ extension FavoritesViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         ReachabilityConvenience.sharedInstance.performReachability { (hasConnection) in
             if hasConnection {
+                self.performRecentlyPlayedFetch()
+                let audioTracks = self.recentlyPlayedFetchedResultsController.fetchedObjects!
+                if audioTracks.count > 9 {
+                    let deleteTrack = audioTracks[0]
+                    CoreDataStack.sharedInstance().context.delete(deleteTrack)
+                }
+                CoreDataStack.sharedInstance().save()
                 performUIUpdatesOnMain {
                     self.performSegue(withIdentifier: Constants.Segues.PlayFavorite, sender: indexPath)
                 }

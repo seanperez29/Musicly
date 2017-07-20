@@ -11,7 +11,9 @@ import Foundation
 extension SpotifyClient {
     func taskForGetMethod(_ parameters: [String:AnyObject], completionHandler: @escaping (_ result: AnyObject?, _ errorString: String?) -> Void) -> Void {
         let session = URLSession.shared
-        let request = URLRequest(url: spotifyURLFromParameters(parameters))
+        var request = URLRequest(url: spotifyURLFromParameters(parameters))
+        request.httpMethod = "GET"
+        request.addValue("Bearer BQDoeHR_uzcZaM0eL7nzswjdoSuNgaQbLms8B2ePxU4npYyaI0TBNMxoeZJpXcpMk2tTUIpt0PCKIjsbpUz5G6GBb6a00fMRW_rn7Pgvo7rFUjs7765Jxob0VEa_NQ85cOtCzWiJnQWnb3mNobKaHkt4gIOjGdk", forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: request) { (data, response, error) in
             func displayError(_ error: String) {
@@ -22,9 +24,11 @@ extension SpotifyClient {
                 return
             }
             guard (error == nil) else {
-                displayError("There was an error with your request: \(error)")
+                displayError("There was an error with your request: \(error!)")
                 return
             }
+            
+            print("STATUS CODE: \(internetError)")
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 displayError("Your request returned a status code other than 2xx!")
                 return

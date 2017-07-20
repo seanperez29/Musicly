@@ -29,7 +29,7 @@ class SongCell: UICollectionViewCell {
             } else {
                 dataTask = SpotifyClient.sharedInstance.getImage(artistTrack.album, completionHandler: { (imageData, errorString) in
                     guard (errorString == nil) else {
-                        print("Error downloading image: \(errorString)")
+                        print("Error downloading image: \(errorString!)")
                         return
                     }
                     if let image = UIImage(data: imageData!) {

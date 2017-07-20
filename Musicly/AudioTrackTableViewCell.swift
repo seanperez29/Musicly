@@ -26,7 +26,7 @@ class AudioTrackTableViewCell: UITableViewCell {
         songNameLabel.text = searchResult.songName
         dataTask = SpotifyClient.sharedInstance.getImage(searchResult.albumURL, completionHandler: { (imageData, errorString) in
             guard (errorString == nil) else {
-                print("Unable to download image: \(errorString)")
+                print("Unable to download image: \(errorString!)")
                 return
             }
             if let image = UIImage(data: imageData!) {

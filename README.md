@@ -1,5 +1,7 @@
 # Musicly
 
+**Due to a recent update to the Spotify API, a user is now required to have a paid Spotify account and as a result Musicly is currently not working as designed. Musicly will be switching over to an iTunes API shortly.
+
 Musicly is a Udacity student project developed in order to display skills learned and acquired throughout the length of the 
 iOS Developer course. This app has been designed and developed by inspiration obtained from the Spotify app currently on the 
 Apple App Store. It also utilizes the Spotify API in order to acquire search results from user input within the Musicly app.

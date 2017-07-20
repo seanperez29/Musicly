@@ -19,7 +19,7 @@ class FavoritesViewController: UITableViewController {
     var recentlyPlayed: RecentlyPlayed!
     weak var delegate: FavoritesViewControllerDelegate?
     lazy var fetchedResultsController: NSFetchedResultsController<ArtistTrack> = {
-       let fetchRequest = NSFetchRequest<ArtistTrack>()
+        let fetchRequest = NSFetchRequest<ArtistTrack>()
         let entity = ArtistTrack.entity()
         fetchRequest.entity = entity
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)

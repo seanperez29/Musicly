@@ -16,7 +16,7 @@ class SpotifyClient: NSObject {
         
         taskForGetMethod(methodParameters as [String : AnyObject]) { (result, errorString) in
             guard (errorString == nil) else {
-                print("There was an error: \(errorString)")
+                print("There was an error: \(errorString!)")
                 completionHandler(nil, errorString)
                 return
             }
